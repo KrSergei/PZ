@@ -255,10 +255,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 800, y: 600}
+  m_ReferenceResolution: {x: 1920, y: 1080}
   m_ScreenMatchMode: 0
   m_MatchWidthOrHeight: 0
   m_PhysicalUnit: 3
@@ -319,6 +319,7 @@ GameObject:
   - component: {fileID: 425086773}
   - component: {fileID: 425086774}
   - component: {fileID: 425086775}
+  - component: {fileID: 425086776}
   m_Layer: 3
   m_Name: Player
   m_TagString: Untagged
@@ -376,6 +377,27 @@ MonoBehaviour:
   _speed: 1
   characterController: {fileID: 0}
   joystick: {fileID: 1563967940}
+--- !u!114 &425086776
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 425086772}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0d4b08c34db831d40acf1ff537551979, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _playerSpriteRenderers:
+  - {fileID: 1869926478}
+  - {fileID: 1487833615}
+  - {fileID: 1653613502}
+  - {fileID: 1466629545}
+  - {fileID: 1074719866}
+  - {fileID: 1795830212}
+  - {fileID: 19061286}
+  _playerController: {fileID: 0}
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
