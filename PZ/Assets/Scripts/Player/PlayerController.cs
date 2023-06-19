@@ -32,7 +32,6 @@ public class PlayerController : MonoBehaviour
         ResultDestination = new Vector3(_horizontal, _vertical, 0f);
         //Задание движения игрока
         characterController.Move(ResultDestination * _speed *  Time.fixedDeltaTime);
-        Debug.Log(_horizontal + " " + _vertical);
         weaponRotate.RotateWeapon(joystick);
     }
 }
