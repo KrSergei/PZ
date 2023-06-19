@@ -3,8 +3,7 @@ using UnityEngine;
 public class PlayerRadar : MonoBehaviour
 {
     public float radiusRadar;
-
-    [SerializeField]
+    
     private new CircleCollider2D collider;
     [SerializeField]
     private Transform radarBorderSprite;
@@ -24,6 +23,6 @@ public class PlayerRadar : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        Debug.Log("Collision");
+        Debug.Log("Trigger");
     }
 }
