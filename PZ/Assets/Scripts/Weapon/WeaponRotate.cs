@@ -2,35 +2,31 @@ using UnityEngine;
 
 public class WeaponRotate : MonoBehaviour
 {
+    public float offset;
 
-    public float maxAngleRotate = 50f;
-    public float speedRotate;
+    public SpriteRenderer weaponSpriteRenderer;
 
-    [SerializeField]
-    private GameObject _weapon;
-    [SerializeField]
-    private Transform _target;
-
-
-
-    void Start()
+    /// <summary>
+    /// Поворот оружия по направлению движения джойстика. Принимает параметром текущий джойстик управления
+    /// </summary>
+    /// <param name="currentJoystick"></param>
+    public void RotateWeapon(Joystick currentJoystick)
     {
-        
+        float rotateZ = Mathf.Atan2(currentJoystick.Vertical, currentJoystick.Horizontal) * Mathf.Rad2Deg;
+        CheckDestination(rotateZ);
+        transform.rotation = Quaternion.Euler(0f, 0f, rotateZ + offset);
     }
 
-    
-    void Update()
-    {
-        
-    }
 
-    public void RotateWeapon(Vector3 currentAngle)
+    /// <summary>
+    /// Инверсия изображения оружия в зависимости от угла поворота джойстика.
+    /// </summary>
+    /// <param name="angle"></param>
+    private void CheckDestination(float angle)
     {
-        float angle = Vector3.Angle(currentAngle, _weapon.transform.position);
-        if (angle <= maxAngleRotate || angle > 130 || angle < 180)
-        {
-           //transform.LookAt(_target);
-        }
-        else Debug.Log("Border angle");
+        if (angle >= 90f || angle <= - 90f)
+            weaponSpriteRenderer.flipY = true;      
+        else
+            weaponSpriteRenderer.flipY = false;
     }
 }

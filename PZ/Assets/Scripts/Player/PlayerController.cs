@@ -33,8 +33,6 @@ public class PlayerController : MonoBehaviour
         //Задание движения игрока
         characterController.Move(ResultDestination * _speed *  Time.fixedDeltaTime);
         //Debug.Log(_horizontal + " " + _vertical);
-        float angle = Vector2.Angle(new Vector2(_horizontal, _vertical), Vector2.right);
-        Debug.Log(angle);
-        weaponRotate.RotateWeapon(ResultDestination);
+        weaponRotate.RotateWeapon(joystick);
     }
 }
