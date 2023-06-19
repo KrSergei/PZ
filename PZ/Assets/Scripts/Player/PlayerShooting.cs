@@ -2,7 +2,6 @@ using UnityEngine;
 
 public class PlayerShooting : MonoBehaviour
 {
-
     private void OnEnable()
     {
         PlayerRadar.onTriggeredMonster += DoShoot;
