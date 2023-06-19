@@ -1,28 +1,43 @@
+using System;
 using UnityEngine;
 
 public class PlayerRadar : MonoBehaviour
 {
+    public static Action onTriggeredMonster;
+    
     public float radiusRadar;
     
-    private new CircleCollider2D collider;
+    private CircleCollider2D _collider;
     [SerializeField]
-    private Transform radarBorderSprite;
+    private Transform _radarBorderSprite;
 
     void Start()
     {
-        collider = GetComponent<CircleCollider2D>();
+        _collider = GetComponent<CircleCollider2D>();
         SetSizeRadarBorder();
     }
 
+    /// <summary>
+    /// Установка границ радара в зависимости от радиуса
+    /// </summary>
     public void SetSizeRadarBorder()
     {
-        collider.radius = radiusRadar;
-        Vector3 renderScale = new Vector3(radarBorderSprite.localScale.x * radiusRadar, radarBorderSprite.localScale.y * radiusRadar, 1f);
-        radarBorderSprite.transform.localScale = renderScale;
+        //установка размера коллайдера
+        _collider.radius = radiusRadar;
+        //вычисление вектора для масштабирования
+        Vector2 renderScale = new(_radarBorderSprite.localScale.x * radiusRadar, _radarBorderSprite.localScale.y * radiusRadar);
+        //установка размера картинки
+        _radarBorderSprite.transform.localScale = renderScale;
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void OnTriggerStay2D(Collider2D collider)
     {
-        Debug.Log("Trigger");
+        if (collider != null)
+        {
+            if (collider.TryGetComponent<Monster>(out var monster))
+            {
+                onTriggeredMonster?.Invoke();
+            }
+        }
     }
 }
