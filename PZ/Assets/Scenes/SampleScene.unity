@@ -148,7 +148,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 19061284}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.083, y: -0.261, z: 0}
+  m_LocalPosition: {x: 0.016, y: 0, z: 0}
   m_LocalScale: {x: 0.7, y: 0.7, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -377,6 +377,7 @@ MonoBehaviour:
   _speed: 1
   characterController: {fileID: 0}
   joystick: {fileID: 1563967940}
+  weaponRotate: {fileID: 0}
 --- !u!114 &425086776
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -396,7 +397,6 @@ MonoBehaviour:
   - {fileID: 1466629545}
   - {fileID: 1074719866}
   - {fileID: 1795830212}
-  - {fileID: 19061286}
   _playerController: {fileID: 0}
 --- !u!1 &519420028
 GameObject:
@@ -491,6 +491,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 911242222}
+  - component: {fileID: 911242223}
   m_Layer: 3
   m_Name: "\u043E\u0440\u0443\u0436\u0438\u0435"
   m_TagString: Untagged
@@ -506,7 +507,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 911242221}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.057, y: 0.015, z: 0}
+  m_LocalPosition: {x: -0.02166988, y: -0.271, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -514,6 +515,20 @@ Transform:
   m_Father: {fileID: 425086773}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &911242223
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 911242221}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 24f539a44d0bf2b4aaee6f81833f620d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  offset: 0
+  weaponSpriteRenderer: {fileID: 19061286}
 --- !u!1 &1074719864
 GameObject:
   m_ObjectHideFlags: 0

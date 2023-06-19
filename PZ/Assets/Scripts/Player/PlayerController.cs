@@ -6,6 +6,8 @@ public class PlayerController : MonoBehaviour
     public CharacterController characterController;
     public Joystick joystick;
 
+    public WeaponRotate weaponRotate;
+
     private float _horizontal;
     private float _vertical;
     private Vector3 _resultDestination;
@@ -15,6 +17,7 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         characterController = GetComponent<CharacterController>();
+        weaponRotate = GetComponentInChildren<WeaponRotate>();
     }
 
     private void Update()
@@ -29,5 +32,7 @@ public class PlayerController : MonoBehaviour
         ResultDestination = new Vector3(_horizontal, _vertical, 0f);
         //Задание движения игрока
         characterController.Move(ResultDestination * _speed *  Time.fixedDeltaTime);
+        //Debug.Log(_horizontal + " " + _vertical);
+        weaponRotate.RotateWeapon(joystick);
     }
 }
