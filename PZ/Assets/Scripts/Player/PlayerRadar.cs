@@ -3,14 +3,14 @@ using UnityEngine;
 
 public class PlayerRadar : MonoBehaviour
 {
-    public static Action onTriggeredMonster;
+    //public static Action onTriggeredMonster;
     
     public float radiusRadar;
     
     private CircleCollider2D _collider;
     [SerializeField]
     private Transform _radarBorderSprite;
-
+ 
     void Start()
     {
         _collider = GetComponent<CircleCollider2D>();
@@ -30,13 +30,26 @@ public class PlayerRadar : MonoBehaviour
         _radarBorderSprite.transform.localScale = renderScale;
     }
 
+    private void Update()
+    {
+        
+    }
+
     private void OnTriggerStay2D(Collider2D collider)
     {
         if (collider != null)
-        {
+        {  
             if (collider.TryGetComponent<Monster>(out var monster))
             {
-                onTriggeredMonster?.Invoke();
+                //GameObject bullet = ObjectPool.instance.GetBullet();
+                GameObject bullet = ObjectPool.instance.GetBulletQueue();
+
+                if (bullet != null)
+                {
+                    bullet.transform.position = ObjectPool.instance.bulletsSpotSpawn.position;
+                    bullet.SetActive(true);
+                }
+                //onTriggeredMonster?.Invoke();
             }
         }
     }

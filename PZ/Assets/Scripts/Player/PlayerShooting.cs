@@ -4,15 +4,10 @@ public class PlayerShooting : MonoBehaviour
 {
     private void OnEnable()
     {
-        PlayerRadar.onTriggeredMonster += DoShoot;
+        //PlayerRadar.onTriggeredMonster += DoShoot;
     }
     private void OnDisable()
     {
-        PlayerRadar.onTriggeredMonster -= DoShoot;
-    }
-
-    private void DoShoot()
-    {
-
+        //PlayerRadar.onTriggeredMonster -= DoShoot;
     }
 }
