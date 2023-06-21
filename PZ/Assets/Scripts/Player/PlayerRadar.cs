@@ -3,14 +3,21 @@ using UnityEngine;
 
 public class PlayerRadar : MonoBehaviour
 {
-    //public static Action onTriggeredMonster;
-    
+    public static Action onLokedMonster;
+
+    public Transform shootSpot;
+    public LayerMask layer;  
     public float radiusRadar;
-    
+    public float timeBetweenShoot;
+
     private CircleCollider2D _collider;
     [SerializeField]
     private Transform _radarBorderSprite;
- 
+    [SerializeField]
+    private int _lokedMonster;
+    [SerializeField]
+    private float _remaindtime;
+
     void Start()
     {
         _collider = GetComponent<CircleCollider2D>();
@@ -30,26 +37,38 @@ public class PlayerRadar : MonoBehaviour
         _radarBorderSprite.transform.localScale = renderScale;
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
-        
-    }
+        //Пуск луча если, количество обнаруженных монстров больше 0
+        if (_lokedMonster > 0)
+        {
+            RaycastHit2D hit = Physics2D.Raycast(shootSpot.position, shootSpot.transform.right, radiusRadar * 5, layer);
+            //Если луч столкнулся с коллайдером монстра, то сделать выстрел
+            if (hit.collider != null) 
+                onLokedMonster?.Invoke();
+        }
+    } 
 
-    private void OnTriggerStay2D(Collider2D collider)
+    private void OnTriggerEnter2D(Collider2D collider)
     {
+        //инкремент количества обнаруживаемых монстров
         if (collider != null)
-        {  
+        {
             if (collider.TryGetComponent<Monster>(out var monster))
             {
-                //GameObject bullet = ObjectPool.instance.GetBullet();
-                GameObject bullet = ObjectPool.instance.GetBulletQueue();
+                _lokedMonster++;
+            }
+        }
+    }
 
-                if (bullet != null)
-                {
-                    bullet.transform.position = ObjectPool.instance.bulletsSpotSpawn.position;
-                    bullet.SetActive(true);
-                }
-                //onTriggeredMonster?.Invoke();
+    private void OnTriggerExit2D(Collider2D collider)
+    {
+        //декремент количества обнаруживаемых монстров
+        if (collider != null)
+        {
+            if (collider.TryGetComponent<Monster>(out var monster))
+            {
+                _lokedMonster--;
             }
         }
     }

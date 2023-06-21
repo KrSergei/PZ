@@ -237,7 +237,8 @@ Transform:
   m_LocalPosition: {x: 4.469718, y: 0.3387558, z: -0.062285233}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 229651695}
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -253,11 +254,43 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 56ed2cca59627cb4a9efb8d35b295189, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _bulletsPool: []
   timeBetweenShoot: 1
   magazinCapacity: 10
   bulletsSpotSpawn: {fileID: 913798318}
-  bulletsStorage: {fileID: 672103123}
+  bulletsStorage: {fileID: 229651695}
   _bulletPrefab: {fileID: 3728848153840559318, guid: 34ced165226e11442b3e61907ab8c1e4, type: 3}
+--- !u!1 &229651694
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 229651695}
+  m_Layer: 0
+  m_Name: BulletsStorage
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &229651695
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 229651694}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 178901848}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &262811920
 GameObject:
   m_ObjectHideFlags: 0
@@ -547,6 +580,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cdb49da0b758bf84f9cd29d6dcbe6c4d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  shootspot: {fileID: 913798318}
+  timeBetweenShoot: 2
+  _remaindtime: 0
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -736,7 +772,7 @@ GameObject:
   m_Component:
   - component: {fileID: 913798318}
   m_Layer: 3
-  m_Name: "\u043E\u0447\u043A\u0430_\u0432\u044B\u0441\u0442\u0440\u0435\u043B\u0430"
+  m_Name: "\u0442\u043E\u0447\u043A\u0430_\u0432\u044B\u0441\u0442\u0440\u0435\u043B\u0430"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -948,8 +984,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fd5d8ac6f2419024490da11fb36eb3c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  shootSpot: {fileID: 913798318}
+  layer:
+    serializedVersion: 2
+    m_Bits: 64
   radiusRadar: 2
+  timeBetweenShoot: 2
   _radarBorderSprite: {fileID: 327525558}
+  _lokedMonster: 0
+  _remaindtime: 0
 --- !u!50 &1275869558
 Rigidbody2D:
   serializedVersion: 4

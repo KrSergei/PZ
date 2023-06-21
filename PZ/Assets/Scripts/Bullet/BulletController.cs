@@ -1,37 +1,21 @@
-using System;
-using System.Collections;
+using Cysharp.Threading.Tasks;
 using UnityEngine;
 
 public class BulletController : MonoBehaviour
 {
     public float lifeTime;
 
-    public static Action<GameObject> isTimeLifeOver;
-    private float _remaidTime;
-
     void Start()
     {
-        //_remaidTime = lifeTime;
-        StartCoroutine(Deactivate());
+        Deactivate();
     }
 
-    //void Update()
-    //{
-    //    if (_remaidTime > 0) _remaidTime -= Time.deltaTime;
-    //    else DeactivateBullet();
-    //}
-
-    //private void DeactivateBullet()
-    //{
-    //    Debug.Log(_remaidTime);
-    //    gameObject.SetActive(false);
-    //}
-
-    IEnumerator Deactivate()
+    private async void Deactivate()
     {
-        yield return new WaitForSeconds(lifeTime);
-        ObjectPool.instance.AddBulletToStorage(gameObject);
-
-        //gameObject.SetActive(false);
-    }
+        Debug.Log((int)lifeTime);
+        await UniTask.Delay((int)lifeTime);
+        
+        gameObject.SetActive(false);
+        ObjectPool.instance.AddBulletToStorage(gameObject);       
+    } 
 }
