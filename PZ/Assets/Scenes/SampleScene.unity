@@ -254,9 +254,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 56ed2cca59627cb4a9efb8d35b295189, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _bulletsPool: []
-  timeBetweenShoot: 1
-  magazinCapacity: 10
   bulletsSpotSpawn: {fileID: 913798318}
   bulletsStorage: {fileID: 229651695}
   _bulletPrefab: {fileID: 3728848153840559318, guid: 34ced165226e11442b3e61907ab8c1e4, type: 3}
@@ -580,8 +577,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cdb49da0b758bf84f9cd29d6dcbe6c4d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shootspot: {fileID: 913798318}
-  timeBetweenShoot: 2
+  shootSpot: {fileID: 0}
+  timeBetweenShoot: 0.5
   _remaindtime: 0
 --- !u!1 &519420028
 GameObject:

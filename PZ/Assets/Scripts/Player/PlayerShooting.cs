@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class PlayerShooting : MonoBehaviour
 {
-    public Transform shootspot;
+    public Transform shootSpot;
 
     public float timeBetweenShoot;
     [SerializeField]
@@ -22,16 +22,21 @@ public class PlayerShooting : MonoBehaviour
             _remaindtime -= Time.deltaTime;
     }
 
+    /// <summary>
+    /// Реализация выстрела, выбор префаба пули из пула 
+    /// </summary>
     private void DoShoot()
     {
-        GameObject bullet = ObjectPool.instance.GetBulletQueue();
-        if (bullet != null)
+        if(_remaindtime <= 0)
         {
-            bullet.transform.position = ObjectPool.instance.bulletsSpotSpawn.position;
-            bullet.transform.rotation = Quaternion.identity;
-            bullet.SetActive(true);
-            _remaindtime = timeBetweenShoot;
+            GameObject bullet = ObjectPool.instance.GetBulletQueue();
+            if (bullet != null)
+            {
+                bullet.transform.position = ObjectPool.instance.bulletsSpotSpawn.position;
+                bullet.transform.rotation = Quaternion.identity;
+                bullet.SetActive(true);
+                _remaindtime = timeBetweenShoot;
+            }
         }
     }
-
 }

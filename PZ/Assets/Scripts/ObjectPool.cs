@@ -25,12 +25,12 @@ public class ObjectPool : MonoBehaviour
     {
         GameObject bullet;
 
-        //if (_bullets.Count == 0)
-        bullet = Instantiate(_bulletPrefab);
-        //else
-        //    bullet = _bullets.Dequeue();
+        if (_bullets.Count == 0)
+            bullet = Instantiate(_bulletPrefab);
+        else
+            bullet = _bullets.Dequeue();
 
-        bullet.SetActive(true);
+        //bullet.SetActive(true);
         bullet.transform.parent = null;
         return bullet;
     }
