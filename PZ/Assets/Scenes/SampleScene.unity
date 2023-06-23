@@ -581,7 +581,7 @@ MonoBehaviour:
   shootSpot: {fileID: 913798318}
   bulletPrefab: {fileID: 3728848153840559318, guid: 34ced165226e11442b3e61907ab8c1e4, type: 3}
   offsetRotateBullet: 90
-  timeBetweenShoot: 1
+  timeBetweenShoot: 0.5
   _remaindtime: 0
   _bulletsStorage: {fileID: 229651695}
 --- !u!1 &519420028
