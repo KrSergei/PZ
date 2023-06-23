@@ -3,12 +3,12 @@ using UnityEngine;
 
 public class PlayerRadar : MonoBehaviour
 {
+    #region fields
     public static Action onLokedMonster;
 
     public Transform shootSpot;
     public LayerMask layer;  
     public float radiusRadar;
-    public float timeBetweenShoot;
 
     private CircleCollider2D _collider;
     [SerializeField]
@@ -17,8 +17,10 @@ public class PlayerRadar : MonoBehaviour
     private int _lokedMonster;
     [SerializeField]
     private float _remaindtime;
+    #endregion
 
-    void Start()
+    #region private methods
+    private void Start()
     {
         _collider = GetComponent<CircleCollider2D>();
         SetSizeRadarBorder();
@@ -27,7 +29,7 @@ public class PlayerRadar : MonoBehaviour
     /// <summary>
     /// Установка границ радара в зависимости от радиуса
     /// </summary>
-    public void SetSizeRadarBorder()
+    private void SetSizeRadarBorder()
     {
         //установка размера коллайдера
         _collider.radius = radiusRadar;
@@ -72,4 +74,5 @@ public class PlayerRadar : MonoBehaviour
             }
         }
     }
+    #endregion
 }

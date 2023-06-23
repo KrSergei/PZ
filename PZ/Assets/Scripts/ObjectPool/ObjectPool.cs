@@ -4,13 +4,12 @@ using UnityEngine;
 public class ObjectPool : MonoBehaviour
 {
     public static ObjectPool instance;
-
-    [SerializeField]
-    private Queue<GameObject> _bullets = new Queue<GameObject>();
-
+  
     public Transform bulletsSpotSpawn;
     public Transform bulletsStorage;
     [SerializeField] private GameObject _bulletPrefab;
+
+    private Queue<GameObject> _bullets = new Queue<GameObject>();
 
     private void Awake()
     {
@@ -24,23 +23,25 @@ public class ObjectPool : MonoBehaviour
     public GameObject GetBulletQueue()
     {
         GameObject bullet;
-
+        Debug.Log("Bullet count = " + _bullets.Count);
         if (_bullets.Count == 0)
+        {
             bullet = Instantiate(_bulletPrefab);
+            _bullets.Enqueue(bullet);
+           
+            return bullet;
+        }
         else
+        {
             bullet = _bullets.Dequeue();
-
-        //bullet.SetActive(true);
-        bullet.transform.parent = null;
-        return bullet;
+            bullet.transform.parent = null;
+            return bullet;
+        }
     }
 
     public void AddBulletToStorage(GameObject currentBullet)
     {
-        //Debug.Log("Deactivate");
         currentBullet.transform.parent = bulletsStorage;
-        currentBullet.SetActive(!gameObject.activeInHierarchy);
-       _bullets.Enqueue(currentBullet);
+        _bullets.Enqueue(currentBullet);
     }
-
 }

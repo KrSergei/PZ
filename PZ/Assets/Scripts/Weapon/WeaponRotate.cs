@@ -17,7 +17,6 @@ public class WeaponRotate : MonoBehaviour
         transform.rotation = Quaternion.Euler(0f, 0f, rotateZ + offset);
     }
 
-
     /// <summary>
     /// Инверсия изображения оружия в зависимости от угла поворота джойстика.
     /// </summary>

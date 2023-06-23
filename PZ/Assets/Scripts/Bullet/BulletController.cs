@@ -1,21 +1,21 @@
-using Cysharp.Threading.Tasks;
 using UnityEngine;
 
 public class BulletController : MonoBehaviour
-{
-    public float lifeTime;
+{    
+    public float speed;
+
+    [SerializeField]
+    private float lifeTime;
+
+    public float LifeTime { get => lifeTime;  private set => lifeTime = value; }
 
     void Start()
     {
-        Deactivate();
+       
     }
 
-    private async void Deactivate()
+    private void FixedUpdate()
     {
-        Debug.Log((int)lifeTime);
-        await UniTask.Delay((int)lifeTime);
-        
-        gameObject.SetActive(false);
-        ObjectPool.instance.AddBulletToStorage(gameObject);       
-    } 
+      
+    }
 }
