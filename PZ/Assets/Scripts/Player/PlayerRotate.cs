@@ -4,7 +4,7 @@ public class PlayerRotate : MonoBehaviour
 {
 
     [SerializeField]
-    private SpriteRenderer[] _playerSpriteRenderers; //массив спраитов для поворота (включает в себя тело игорока и его оружие)
+    private SpriteRenderer[] _playerSpriteRenderers; //массив спрайтов для поворота (включает в себя тело игорока и его оружие)
 
     [SerializeField]
     private PlayerController _playerController;

@@ -1,28 +1,78 @@
+using System;
 using UnityEngine;
 
 public class PlayerRadar : MonoBehaviour
 {
-    public float radiusRadar;
-    
-    private new CircleCollider2D collider;
-    [SerializeField]
-    private Transform radarBorderSprite;
+    #region fields
+    public static Action onLokedMonster;
 
-    void Start()
+    public Transform shootSpot;
+    public LayerMask layer;  
+    public float radiusRadar;
+
+    private CircleCollider2D _collider;
+    [SerializeField]
+    private Transform _radarBorderSprite;
+    [SerializeField]
+    private int _lokedMonster;
+    [SerializeField]
+    private float _remaindtime;
+    #endregion
+
+    #region private methods
+    private void Start()
     {
-        collider = GetComponent<CircleCollider2D>();
+        _collider = GetComponent<CircleCollider2D>();
         SetSizeRadarBorder();
     }
 
-    public void SetSizeRadarBorder()
+    /// <summary>
+    /// Установка границ радара в зависимости от радиуса
+    /// </summary>
+    private void SetSizeRadarBorder()
     {
-        collider.radius = radiusRadar;
-        Vector3 renderScale = new Vector3(radarBorderSprite.localScale.x * radiusRadar, radarBorderSprite.localScale.y * radiusRadar, 1f);
-        radarBorderSprite.transform.localScale = renderScale;
+        //установка размера коллайдера
+        _collider.radius = radiusRadar;
+        //вычисление вектора для масштабирования
+        Vector2 renderScale = new(_radarBorderSprite.localScale.x * radiusRadar, _radarBorderSprite.localScale.y * radiusRadar);
+        //установка размера картинки
+        _radarBorderSprite.transform.localScale = renderScale;
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void FixedUpdate()
     {
-        Debug.Log("Trigger");
+        //Пуск луча если, количество обнаруженных монстров больше 0
+        if (_lokedMonster > 0)
+        {
+            RaycastHit2D hit = Physics2D.Raycast(shootSpot.position, shootSpot.transform.right, radiusRadar * 5, layer);
+            //Если луч столкнулся с коллайдером монстра, то сделать выстрел
+            if (hit.collider != null) 
+                onLokedMonster?.Invoke();
+        }
+    } 
+
+    private void OnTriggerEnter2D(Collider2D collider)
+    {
+        //инкремент количества обнаруживаемых монстров
+        if (collider != null)
+        {
+            if (collider.TryGetComponent<Monster>(out var monster))
+            {
+                _lokedMonster++;
+            }
+        }
     }
+
+    private void OnTriggerExit2D(Collider2D collider)
+    {
+        //декремент количества обнаруживаемых монстров
+        if (collider != null)
+        {
+            if (collider.TryGetComponent<Monster>(out var monster))
+            {
+                _lokedMonster--;
+            }
+        }
+    }
+    #endregion
 }
