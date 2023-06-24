@@ -12,8 +12,8 @@ GameObject:
   - component: {fileID: 693350695415475620}
   - component: {fileID: 693350695415475621}
   - component: {fileID: 693350695415475626}
-  - component: {fileID: 693350695415475622}
-  m_Layer: 0
+  - component: {fileID: 2238543218363393511}
+  m_Layer: 7
   m_Name: BulletproofCloakElbow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -28,7 +28,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 693350695415475627}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 4.38, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 6, y: 6, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -134,7 +134,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.04, y: 0.14}
   m_EdgeRadius: 0
---- !u!114 &693350695415475622
+--- !u!114 &2238543218363393511
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -143,6 +143,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 693350695415475627}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 30f27afd2066cc34d992ed26ebcf4a46, type: 3}
+  m_Script: {fileID: 11500000, guid: bd477c3fbff904342aa5fa7556a9e5de, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 

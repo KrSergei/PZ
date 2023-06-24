@@ -12,8 +12,8 @@ GameObject:
   - component: {fileID: 1483426116240866223}
   - component: {fileID: 6162330405720693956}
   - component: {fileID: 6926725340782783447}
-  - component: {fileID: -2047353665612384359}
-  m_Layer: 0
+  - component: {fileID: 6571315319248727995}
+  m_Layer: 7
   m_Name: 5.45x39
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -75,7 +75,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 20
   m_Sprite: {fileID: 21300000, guid: d45f0cae013abb84688afe6e4bc52845, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -134,7 +134,7 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!114 &-2047353665612384359
+--- !u!114 &6571315319248727995
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -143,7 +143,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 7065212896535653408}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 30f27afd2066cc34d992ed26ebcf4a46, type: 3}
+  m_Script: {fileID: 11500000, guid: bd477c3fbff904342aa5fa7556a9e5de, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  slotButton: {fileID: 6757416404070320291, guid: 0ad87f9fc6b18cb4e8077bc9b2187b48, type: 3}

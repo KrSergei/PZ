@@ -6,7 +6,7 @@ public class InventoryPikup : MonoBehaviour
 
     private void Start()
     {
-        inventory = FindObjectOfType<Player>().GetComponent<Inventory>();
+        inventory = FindObjectOfType<Inventory>().GetComponent<Inventory>();
     }
 
     private void OnTriggerEnter2D(Collider2D collaider)        
