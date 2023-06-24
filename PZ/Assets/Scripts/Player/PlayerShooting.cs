@@ -14,10 +14,9 @@ public class PlayerShooting : MonoBehaviour
     public float offsetRotateBullet;
     public float timeBetweenShoot;
 
-    [SerializeField]
-    private float _remaindtime;
-    [SerializeField]
-    private Transform _bulletsStorage;
+    [SerializeField] private float _remaindtime;
+    [SerializeField] private bool _canShoot;
+    [SerializeField] private Transform _bulletsStorage;
     private PoolBase<GameObject> _bulletPool;
     #endregion
 
@@ -39,22 +38,7 @@ public class PlayerShooting : MonoBehaviour
     {
         if (_remaindtime > 0)
             _remaindtime -= Time.fixedDeltaTime;
-    }
-
-    /// <summary>
-    /// Реализация выстрела, выбор префаба пули из пула и установка точки стрельбы
-    /// </summary>
-    private void DoShoot()
-    {
-        if (_remaindtime <= 0)
-        {
-            GameObject bullet = _bulletPool.Get();
-            bullet.transform.rotation = weapon.rotation;            
-            bullet.transform.position = shootSpot.position;
-            bullet.SetActive(true);
-            _remaindtime = timeBetweenShoot;
-            ReturnToPool(bullet);
-        }
+        if (Input.GetKey(KeyCode.Space)) DoShoot();
     }
 
     /// <summary>
@@ -76,6 +60,22 @@ public class PlayerShooting : MonoBehaviour
     #endregion
 
     #region public method
+    /// <summary>
+    /// Реализация выстрела, выбор префаба пули из пула и установка точки стрельбы
+    /// </summary>
+    public void DoShoot()
+    {
+        if (_remaindtime <= 0)
+        {
+            GameObject bullet = _bulletPool.Get();
+            bullet.transform.rotation = weapon.rotation;
+            bullet.transform.position = shootSpot.position;
+            bullet.SetActive(true);
+            _remaindtime = timeBetweenShoot;
+            ReturnToPool(bullet);
+        }
+    }
+
     /// <summary>
     /// Создание пула объекта "пуля"
     /// </summary>

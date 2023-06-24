@@ -101,7 +101,6 @@ MonoBehaviour:
   speed: 100
   rb: {fileID: 2387313776839349413}
   lifeTime: 2
-  _isPhisicsBody: 0
 --- !u!50 &2387313776839349413
 Rigidbody2D:
   serializedVersion: 4
