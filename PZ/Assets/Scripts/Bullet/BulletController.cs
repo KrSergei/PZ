@@ -16,9 +16,8 @@ public class BulletController : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
     }
 
-
     private void FixedUpdate()
     {
-        rb.AddForce(Vector2.right * speed * Time.fixedDeltaTime, ForceMode2D.Impulse);       
+        rb.AddForce(transform.right * speed * Time.fixedDeltaTime, ForceMode2D.Impulse);       
     }
 }
