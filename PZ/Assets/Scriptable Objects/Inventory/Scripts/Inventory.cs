@@ -22,7 +22,7 @@ public class Inventory : MonoBehaviour
 
     private void OnApplicationQuit()
     {
-        inventory.container.Clear();
+        //inventory.container.Clear();
     }
     #region old method
     //public bool[] isFull;

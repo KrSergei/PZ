@@ -12,4 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 46968b0a2ed6c7d45b562ab04fc6cd7f, type: 3}
   m_Name: SovietBagInventory
   m_EditorClassIdentifier: 
-  container: []
+  container:
+  - item: {fileID: 11400000, guid: df8fcba92e62e7346be52a57424869f5, type: 2}
+    amount: 24
+  - item: {fileID: 11400000, guid: 2968499ed7663094c9f8990f8a383ae1, type: 2}
+    amount: 15

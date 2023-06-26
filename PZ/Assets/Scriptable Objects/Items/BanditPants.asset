@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e1c5974c6cb848c419a7e637db2635a0, type: 3}
-  m_Name: SovietBag
+  m_Name: BanditPants
   m_EditorClassIdentifier: 
-  prefab: {fileID: 3251760878470942727, guid: 9a873f1083362604ab5285592afa49ea, type: 3}
+  prefab: {fileID: 3251760878470942727, guid: fa3e6dbf59901144782c52968af70f57, type: 3}
   type: 1
   decsription: 
   attackBonusValue: 0
-  defenceValue: 0
+  defenceValue: 10

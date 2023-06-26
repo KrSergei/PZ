@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6c524f97940f3b04bba46e733954d1f0, type: 3}
   m_Name: Ammo
   m_EditorClassIdentifier: 
-  prefab: {fileID: 7065212896535653408, guid: 08680e4c4659fbf4a81194479f35d10c, type: 3}
+  prefab: {fileID: 3251760878470942727, guid: 022ccd3b5b090b341a1f581792571039, type: 3}
   type: 0
   decsription: 
   damageValue: 10

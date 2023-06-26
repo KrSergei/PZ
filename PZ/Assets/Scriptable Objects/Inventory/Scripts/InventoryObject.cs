@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "New Inventory", menuName = "Inventory System/Inventory")]
@@ -19,6 +20,11 @@ public class InventoryObject : ScriptableObject
         }
         if(!hasItem) container.Add(new InvemtorySlot(item ,amount));
     }
+
+    //public GameObject GetPrefab(InvemtorySlot item) 
+    //{
+    //    //return GetCurrentPrefab(item);
+    //}
 }
 
 [System.Serializable]
@@ -32,5 +38,6 @@ public class InvemtorySlot
         this.amount = amount;
     }
     public void AddAmount(int value) => amount += value;
-    public void SubstractionAmount(int value = 1) => amount -= value; 
+    public void SubstractionAmount(int value = 1) => amount -= value;
+    public GameObject GetCurrentPrefab(InvemtorySlot item) => item.item.prefab;
 }
