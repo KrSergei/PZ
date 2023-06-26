@@ -5,6 +5,13 @@ TagManager:
   serializedVersion: 2
   tags:
   - Monster
+  - AK-74
+  - BanditPants
+  - BulletproofCloakElbow
+  - BulletproofCloakWrist
+  - 5.45x39
+  - MilitaryHelmet
+  - SovietBag
   layers:
   - Default
   - TransparentFX
