@@ -1,6 +1,7 @@
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
+using System.Collections.Generic;
 
 public class DisplayInventory : MonoBehaviour
 {
@@ -8,11 +9,13 @@ public class DisplayInventory : MonoBehaviour
 
     public int slotsCount;
     public GameObject slotPrefab;
-
+    public List<GameObject> createdSlots = new List<GameObject>();
     public int x_Space_Beetwen_Items;
     public int number_of_column;
 
-    void Start()
+    private Dictionary<InvemtorySlot, GameObject> itemDisplayed = new Dictionary<InvemtorySlot, GameObject>();
+
+    private void Start()
     {
         CreateDisplay();
     }
@@ -24,18 +27,22 @@ public class DisplayInventory : MonoBehaviour
     {
         for (int i = 0; i < slotsCount; i++)
         {
-            GameObject slot = Instantiate(slotPrefab, Vector2.zero, Quaternion.identity, transform);
-            slot.transform.localPosition = GetPosition(i);
-                if(i < inventory.container.Count)
+            GameObject item = Instantiate(slotPrefab, Vector2.zero, Quaternion.identity, transform);
+            item.GetComponent<ButtonDelete>().indexButton = i;
+            item.transform.localPosition = GetPosition(i);
+            if (i < inventory.container.Count)
             {
                 //отрисовка иконки предмета в слоте
-                slot.gameObject.GetComponent<Image>().sprite = GetIconItem(inventory.container[i]);
+                item.gameObject.GetComponent<Image>().sprite = GetIconItem(inventory.container[i]);
                 //вывод коичества предметов в слоте
-                slot.GetComponentInChildren<TextMeshProUGUI>().text = inventory.container[i].amount.ToString("n0");
+                item.GetComponentInChildren<TextMeshProUGUI>().text = inventory.container[i].amount.ToString("n0");
+                //добавление предмета в инвентарь
+                itemDisplayed.Add(inventory.container[i], item);
             }
+            createdSlots.Add(item);
         }   
     }
-
+    
     /// <summary>
     /// указание позиции размещения слота инвентаря
     /// </summary>
@@ -54,5 +61,34 @@ public class DisplayInventory : MonoBehaviour
     private Sprite GetIconItem(InvemtorySlot item)
     {
         return item.item.prefab.GetComponent<SpriteRenderer>().sprite; 
+    }
+
+    public void UpdateInventory()
+    {
+        for (int i = 0; i < inventory.container.Count; i++)
+        {
+            if (i == slotsCount) break;
+
+            if (itemDisplayed.ContainsKey(inventory.container[i]))
+            {
+                itemDisplayed[inventory.container[i]].GetComponentInChildren<TextMeshProUGUI>().text =
+                inventory.container[i].amount.ToString("n0");
+            }
+            else
+            {
+                GameObject item = createdSlots[i];
+                //отрисовка иконки предмета в слоте
+                item.gameObject.GetComponent<Image>().sprite = GetIconItem(inventory.container[i]);
+                //вывод коичества предметов в слоте
+                item.GetComponentInChildren<TextMeshProUGUI>().text = inventory.container[i].amount.ToString("n0");
+                //добавление предмета в инвентарь
+                itemDisplayed.Add(inventory.container[i], item);
+            }
+        }
+    }
+
+    public void RemoveItem()
+    {
+
     }
 }

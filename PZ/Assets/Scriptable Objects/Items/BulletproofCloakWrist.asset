@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e1c5974c6cb848c419a7e637db2635a0, type: 3}
   m_Name: BulletproofCloakWrist
   m_EditorClassIdentifier: 
-  prefab: {fileID: 3251760878470942727, guid: fd8ccb2bd4f4deb4f8b5db746f25cd3b, type: 3}
+  prefab: {fileID: 8244695423923054272, guid: 4d1fd551d1027fa49bf12bf36363aa5c, type: 3}
   type: 1
   decsription: 
   attackBonusValue: 0

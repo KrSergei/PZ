@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e1c5974c6cb848c419a7e637db2635a0, type: 3}
   m_Name: BanditPants
   m_EditorClassIdentifier: 
-  prefab: {fileID: 3251760878470942727, guid: fa3e6dbf59901144782c52968af70f57, type: 3}
+  prefab: {fileID: 8346742083178785765, guid: 51d0cc38445435e49b71d2e902c3f257, type: 3}
   type: 1
   decsription: 
   attackBonusValue: 0

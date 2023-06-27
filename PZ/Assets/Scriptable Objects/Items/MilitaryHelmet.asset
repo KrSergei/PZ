@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e1c5974c6cb848c419a7e637db2635a0, type: 3}
   m_Name: MilitaryHelmet
   m_EditorClassIdentifier: 
-  prefab: {fileID: 3251760878470942727, guid: 6e85075b5992b45448300d96c8c8cd81, type: 3}
+  prefab: {fileID: 4371781483725563081, guid: 07eac00fe57f26a49b12e502be711dbf, type: 3}
   type: 1
   decsription: 
   attackBonusValue: 0
