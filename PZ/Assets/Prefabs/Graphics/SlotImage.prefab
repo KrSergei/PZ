@@ -528,7 +528,9 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
   inventory: {fileID: 11400000, guid: cd5e55b39a500e949b8938033fe6e37b, type: 2}
+  inventoryDisplay: {fileID: 0}
   button: {fileID: 2914277820412737538}
+  textCount: {fileID: 6311533134776881626}
   indexButton: 0
   actionTimeButton: 2
 --- !u!1 &6311533134776881624

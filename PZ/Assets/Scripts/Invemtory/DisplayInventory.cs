@@ -2,6 +2,7 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
 using System.Collections.Generic;
+using JetBrains.Annotations;
 
 public class DisplayInventory : MonoBehaviour
 {
@@ -106,6 +107,15 @@ public class DisplayInventory : MonoBehaviour
             }
         }
     }
+
+    public void ChangeAmountItem(int indexSlot)
+    {
+        //проверка количества патронов, если больше 1, то устанавливается значение текущего количества, иначе пустая строка
+        string currentAmount = (AmountItem(inventory.container[indexSlot].amount))
+            ? inventory.container[indexSlot].amount.ToString("n0") : "";
+        createdSlots[indexSlot].GetComponent<ButtonDelete>().textCount.text = currentAmount;
+    }
+
     /// <summary>
     /// Сброс иконки и количества при удалении предмета из инвентаря
     /// </summary>

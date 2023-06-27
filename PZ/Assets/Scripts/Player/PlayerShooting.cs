@@ -13,6 +13,7 @@ public class PlayerShooting : MonoBehaviour
     public GameObject bulletPrefab;
     public float offsetRotateBullet;
     public float timeBetweenShoot;
+    public Inventory inventory;
 
     [SerializeField] private float _remaindtime;
     [SerializeField] private bool _canShoot;
@@ -24,8 +25,8 @@ public class PlayerShooting : MonoBehaviour
     private void Awake()
     {
         _bulletPool = new PoolBase<GameObject>(Preload, GetAction, ReturnAction, BULLET_PRELOAD_COUNT);
+        inventory = GetComponent<Inventory>();
     }
-
     private void OnEnable()
     {
         PlayerRadar.onLokedMonster += DoShoot;
@@ -67,12 +68,19 @@ public class PlayerShooting : MonoBehaviour
     {
         if (_remaindtime <= 0)
         {
-            GameObject bullet = _bulletPool.Get();
-            bullet.transform.rotation = weapon.rotation;
-            bullet.transform.position = shootSpot.position;
-            bullet.SetActive(true);
-            _remaindtime = timeBetweenShoot;
-            ReturnToPool(bullet);
+            //проверка на наличие патронов в инвентаре
+            if (inventory.CanShoot()) 
+            {
+                //Создание пули
+                GameObject bullet = _bulletPool.Get();
+                bullet.transform.rotation = weapon.rotation;
+                bullet.transform.position = shootSpot.position;
+                bullet.SetActive(true);
+                //обновление времени восстановления
+                _remaindtime = timeBetweenShoot;
+                //возврат пули в пул
+                ReturnToPool(bullet);
+            }
         }
     }
 
