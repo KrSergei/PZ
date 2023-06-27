@@ -6,7 +6,6 @@ using System.Collections.Generic;
 public class DisplayInventory : MonoBehaviour
 {
     public InventoryObject inventory;
-
     public int slotsCount;
     public GameObject slotPrefab;
     public List<GameObject> createdSlots = new List<GameObject>();
@@ -63,6 +62,19 @@ public class DisplayInventory : MonoBehaviour
         return item.item.prefab.GetComponent<SpriteRenderer>().sprite; 
     }
 
+    /// <summary>
+    /// Возврат true если количества претметов больше 1 
+    /// </summary>
+    /// <param name="amount"></param>
+    /// <returns></returns>
+    private bool AmountItem(int amount)
+    {
+       return amount > 1 ? true : false;
+    }
+
+    /// <summary>
+    /// Обновление инвентаря при подборе предмета
+    /// </summary>
     public void UpdateInventory()
     {
         for (int i = 0; i < inventory.container.Count; i++)
@@ -70,25 +82,37 @@ public class DisplayInventory : MonoBehaviour
             if (i == slotsCount) break;
 
             if (itemDisplayed.ContainsKey(inventory.container[i]))
-            {
-                itemDisplayed[inventory.container[i]].GetComponentInChildren<TextMeshProUGUI>().text =
-                inventory.container[i].amount.ToString("n0");
+            {   
+                //Проверка на количество, если 2 и более, то изменение количества, иначе пустая строка.
+                if (AmountItem(inventory.container[i].amount))
+                    itemDisplayed[inventory.container[i]].GetComponentInChildren<TextMeshProUGUI>().text =
+                    inventory.container[i].amount.ToString("n0");
+                else
+                    itemDisplayed[inventory.container[i]].GetComponentInChildren<TextMeshProUGUI>().text = "";
             }
             else
             {
                 GameObject item = createdSlots[i];
                 //отрисовка иконки предмета в слоте
                 item.gameObject.GetComponent<Image>().sprite = GetIconItem(inventory.container[i]);
-                //вывод коичества предметов в слоте
-                item.GetComponentInChildren<TextMeshProUGUI>().text = inventory.container[i].amount.ToString("n0");
+                //Проверка на количество, если 2 и более, то изменение количества, иначе пустая строка.
+                if (AmountItem(inventory.container[i].amount))
+                    //вывод коичества предметов в слоте
+                    item.GetComponentInChildren<TextMeshProUGUI>().text = inventory.container[i].amount.ToString("n0");
+                else
+                    item.GetComponentInChildren<TextMeshProUGUI>().text = "";
                 //добавление предмета в инвентарь
                 itemDisplayed.Add(inventory.container[i], item);
             }
         }
     }
-
-    public void RemoveItem()
+    /// <summary>
+    /// Сброс иконки и количества при удалении предмета из инвентаря
+    /// </summary>
+    /// <param name="indexSlot"></param>
+    public void RemoveItem(int indexSlot)
     {
-
+        createdSlots[indexSlot].GetComponent<Image>().sprite = null;
+        createdSlots[indexSlot].GetComponent<ButtonDelete>().textCount.text = "";
     }
 }

@@ -15,12 +15,6 @@ public class Inventory : MonoBehaviour
         }
     }
 
-    public void RemoveItem(int indexSlot)
-    {
-        Debug.Log("Delete item in slot " + indexSlot);
-        inventory.RemoveItem(indexSlot);
-    }
-
     private void OnApplicationQuit()
     {
         inventory.container.Clear();

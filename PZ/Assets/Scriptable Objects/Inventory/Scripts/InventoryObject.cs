@@ -1,7 +1,5 @@
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
-using static UnityEditor.Progress;
 
 [CreateAssetMenu(fileName = "New Inventory", menuName = "Inventory System/Inventory")]
 public class InventoryObject : ScriptableObject
@@ -12,23 +10,33 @@ public class InventoryObject : ScriptableObject
         bool hasItem = false;
         for (int i = 0; i < container.Count; i++)
         {
+            if (container[i].item == null)
+            {
+                container[i] = new InvemtorySlot(item, amount);
+                container[i].AddAmount(amount);
+                hasItem = true;
+                break;
+            }
             if (container[i].item == item)
             {
                 container[i].AddAmount(amount);
                 hasItem = true;
                 break;
-            }
+            } 
         }
         if (!hasItem) container.Add(new InvemtorySlot(item, amount));
-    }
 
+    }
     public void RemoveItem(int indexSlot) 
     {
+        if (container.Count == 0 || indexSlot > container.Count) return; 
+
         if (container[indexSlot].item != null)
         {
-            container.RemoveAt(indexSlot);
-            //container[indexSlot].SetAmountWhenRemoveItem();
+            container[indexSlot].amount = - 1;
+            container[indexSlot] = null;
         }
+        else return;
     }
 }
 
@@ -44,7 +52,5 @@ public class InvemtorySlot
     }
     public void AddAmount(int value) => amount += value;
     public void SubstractionAmount(int value = 1) => amount -= value;
-    public void SetAmountWhenRemoveItem() => amount = 0;
-    
     public GameObject GetCurrentPrefab(InvemtorySlot item) => item.item.prefab;
 }
