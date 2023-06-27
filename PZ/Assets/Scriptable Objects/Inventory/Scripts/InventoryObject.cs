@@ -13,7 +13,7 @@ public class InventoryObject : ScriptableObject
             if (container[i].item == null)
             {
                 container[i] = new InvemtorySlot(item, amount);
-                container[i].AddAmount(amount);
+                //container[i].AddAmount(amount);
                 hasItem = true;
                 break;
             }
@@ -33,7 +33,6 @@ public class InventoryObject : ScriptableObject
 
         if (container[indexSlot].item != null)
         {
-            container[indexSlot].amount = - 1;
             container[indexSlot] = null;
         }
         else return;
@@ -50,7 +49,10 @@ public class InvemtorySlot
         this.item = item;
         this.amount = amount;
     }
-    public void AddAmount(int value) => amount += value;
-    public void SubstractionAmount(int value = 1) => amount -= value;
+    public void AddAmount(int value) {
+        Debug.Log("Add amount");
+        amount += value;
+    } 
+    public void SubstractionAmount(int value) => amount -= value;
     public GameObject GetCurrentPrefab(InvemtorySlot item) => item.item.prefab;
 }

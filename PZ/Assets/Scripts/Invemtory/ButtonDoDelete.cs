@@ -11,5 +11,3 @@ public class ButtonDoDelete : MonoBehaviour
         onDoDelete?.Invoke(GetComponentInParent<ButtonDelete>().indexButton);
     }
 }
-[System.Serializable]
-public class EvenInt : UnityEvent<int> { }
