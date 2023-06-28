@@ -60,7 +60,15 @@ public class DisplayInventory : MonoBehaviour
     /// <returns></returns>
     private Sprite GetIconItem(InvemtorySlot item)
     {
-        return item.item.prefab.GetComponent<SpriteRenderer>().sprite; 
+        try
+        {
+            return item.item.prefab.GetComponent<SpriteRenderer>().sprite;
+        }
+        catch (Exception)
+        {
+            throw;
+        }
+         
     }
 
     /// <summary>
@@ -80,7 +88,6 @@ public class DisplayInventory : MonoBehaviour
     {
         for (int i = 0; i < inventory.container.Count; i++)
         {
-            //if (i == slotsCount) break;
             try
             {
                 if (itemDisplayed.ContainsKey(inventory.container[i]))
