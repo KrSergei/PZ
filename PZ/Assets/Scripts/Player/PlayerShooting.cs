@@ -7,7 +7,7 @@ public class PlayerShooting : MonoBehaviour
     #region fields
     private const int BULLET_PRELOAD_COUNT = 10;
 
-    [Header("Оружие")]
+    [Header("Weapon")]
     public Transform weapon;
     public Transform shootSpot;
     public GameObject bulletPrefab;
@@ -56,7 +56,6 @@ public class PlayerShooting : MonoBehaviour
         _bulletPool.Return(bullet);
         //отсчет времени до деактивации пули
         await UniTask.Delay((int)time * 1000);
-        //await UniTask.Delay((int)lifeTimeBullet * 1000);
         //деактивация пули
         bullet.SetActive(false);
     }

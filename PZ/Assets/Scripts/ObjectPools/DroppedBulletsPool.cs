@@ -4,7 +4,7 @@ using UnityEngine;
 public class DroppedBulletsPool : MonoBehaviour
 {
     public static DroppedBulletsPool instance;
-
+    public int PRELOAD_COUNT = 10;
     public Transform bulletsStorage;
     [SerializeField] private GameObject _droppedBulletPrefab;
     [SerializeField] private AmmoObject _droppedBullet;
@@ -17,10 +17,6 @@ public class DroppedBulletsPool : MonoBehaviour
         _droppedBulletPrefab = _droppedBullet.prefab;
     }
 
-    /// <summary>
-    /// Метод возвращает объект пуля для
-    /// </summary>
-    /// <returns></returns>
     public GameObject GetItemFromPool()
     {
         GameObject item;

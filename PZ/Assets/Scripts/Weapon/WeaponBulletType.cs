@@ -6,7 +6,7 @@ public class WeaponBulletType : MonoBehaviour
 
     public GameObject GetBulletPrefab()
     {
-        return bullet.prefabDealingDamage;
+        return bullet.prefab;
     }
 
     public int GetBulletDamage()

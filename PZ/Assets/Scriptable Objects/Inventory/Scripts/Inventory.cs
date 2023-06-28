@@ -44,7 +44,7 @@ public class Inventory : MonoBehaviour
                     }
                 }
             }
-            catch (NullReferenceException)
+            catch (Exception)
             {
                 value = false;
             }
