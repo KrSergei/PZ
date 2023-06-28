@@ -3,12 +3,9 @@ using UnityEngine.Events;
 
 public class PlayerHealth : MonoBehaviour
 {
-    public UnityEvent onHealthOver;
     public HealthBar healthBar;
 
     [SerializeField] private float health, maxHealth;
-
-    public float Health { get => health; set => health = value; }
     private void Awake()
     {
         healthBar = GetComponentInChildren<HealthBar>();
@@ -20,16 +17,13 @@ public class PlayerHealth : MonoBehaviour
         health = maxHealth;
         healthBar.UpdateHealthBar(health, maxHealth);
     }
-    public void TakeDamage(int damage)
+    public void TakeDamage(float damage)
     {
-        Health -= damage;
+        health -= damage;
         healthBar.UpdateHealthBar(health, maxHealth);
-        if (Health <= 0)
+        if (health <= 0)
         {
-            onHealthOver?.Invoke();
             gameObject.SetActive(false);
         }
     }
-
-
 }

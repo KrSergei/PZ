@@ -21,7 +21,7 @@ public class MonsterHealth : MonoBehaviour
         health = maxHealth;
         healthBar.UpdateHealthBar(health, maxHealth);
     }
-    public void TakeDamage(int damage)
+    public void TakeDamage(float damage)
     {
         Health -= damage;
         healthBar.UpdateHealthBar(health, maxHealth);
