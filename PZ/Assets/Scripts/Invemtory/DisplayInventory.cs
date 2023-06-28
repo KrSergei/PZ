@@ -2,7 +2,7 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
 using System.Collections.Generic;
-using JetBrains.Annotations;
+using System;
 
 public class DisplayInventory : MonoBehaviour
 {
@@ -80,30 +80,36 @@ public class DisplayInventory : MonoBehaviour
     {
         for (int i = 0; i < inventory.container.Count; i++)
         {
-            if (i == slotsCount) break;
-
-            if (itemDisplayed.ContainsKey(inventory.container[i]))
-            {   
-                //ѕроверка на количество, если 2 и более, то изменение количества, иначе пуста€ строка.
-                if (AmountItem(inventory.container[i].amount))
-                    itemDisplayed[inventory.container[i]].GetComponentInChildren<TextMeshProUGUI>().text =
-                    inventory.container[i].amount.ToString("n0");
-                else
-                    itemDisplayed[inventory.container[i]].GetComponentInChildren<TextMeshProUGUI>().text = "";
-            }
-            else
+            //if (i == slotsCount) break;
+            try
             {
-                GameObject item = createdSlots[i];
-                //отрисовка иконки предмета в слоте
-                item.gameObject.GetComponent<Image>().sprite = GetIconItem(inventory.container[i]);
-                //ѕроверка на количество, если 2 и более, то изменение количества, иначе пуста€ строка.
-                if (AmountItem(inventory.container[i].amount))
-                    //вывод коичества предметов в слоте
-                    item.GetComponentInChildren<TextMeshProUGUI>().text = inventory.container[i].amount.ToString("n0");
+                if (itemDisplayed.ContainsKey(inventory.container[i]))
+                {
+                    //ѕроверка на количество, если 2 и более, то изменение количества, иначе пуста€ строка.
+                    if (AmountItem(inventory.container[i].amount))
+                        itemDisplayed[inventory.container[i]].GetComponentInChildren<TextMeshProUGUI>().text =
+                        inventory.container[i].amount.ToString("n0");
+                    else
+                        itemDisplayed[inventory.container[i]].GetComponentInChildren<TextMeshProUGUI>().text = "";
+                }
                 else
-                    item.GetComponentInChildren<TextMeshProUGUI>().text = "";
-                //добавление предмета в инвентарь
-                itemDisplayed.Add(inventory.container[i], item);
+                {
+                    GameObject item = createdSlots[i];
+                    //отрисовка иконки предмета в слоте
+                    item.gameObject.GetComponent<Image>().sprite = GetIconItem(inventory.container[i]);
+                    //ѕроверка на количество, если 2 и более, то изменение количества, иначе пуста€ строка.
+                    if (AmountItem(inventory.container[i].amount))
+                        //вывод коичества предметов в слоте
+                        item.GetComponentInChildren<TextMeshProUGUI>().text = inventory.container[i].amount.ToString("n0");
+                    else
+                        item.GetComponentInChildren<TextMeshProUGUI>().text = "";
+                    //добавление предмета в инвентарь
+                    itemDisplayed.Add(inventory.container[i], item);
+                }
+            }
+            catch (ArgumentNullException)
+            {
+                break;
             }
         }
     }

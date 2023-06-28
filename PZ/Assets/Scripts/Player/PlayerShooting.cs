@@ -15,7 +15,7 @@ public class PlayerShooting : MonoBehaviour
     public float timeBetweenShoot;
     public Inventory inventory;
 
-    [SerializeField] private float _remaindtime;
+    [SerializeField] private float _remaindTime;
     [SerializeField] private bool _canShoot;
     [SerializeField] private Transform _bulletsStorage;
     private PoolBase<GameObject> _bulletPool;
@@ -24,6 +24,8 @@ public class PlayerShooting : MonoBehaviour
     #region private method
     private void Awake()
     {
+        //получение преафба пули текущего оружия
+        bulletPrefab = GetComponentInChildren<WeaponBulletType>().GetBulletPrefab();
         _bulletPool = new PoolBase<GameObject>(Preload, GetAction, ReturnAction, BULLET_PRELOAD_COUNT);
         inventory = GetComponent<Inventory>();
     }
@@ -37,8 +39,8 @@ public class PlayerShooting : MonoBehaviour
     }
     private void FixedUpdate()
     {
-        if (_remaindtime > 0)
-            _remaindtime -= Time.fixedDeltaTime;
+        if (_remaindTime > 0)
+            _remaindTime -= Time.fixedDeltaTime;
         if (Input.GetKey(KeyCode.Space)) DoShoot();
     }
 
@@ -66,7 +68,7 @@ public class PlayerShooting : MonoBehaviour
     /// </summary>
     public void DoShoot()
     {
-        if (_remaindtime <= 0)
+        if (_remaindTime <= 0)
         {
             //проверка на наличие патронов в инвентаре
             if (inventory.CanShoot()) 
@@ -77,7 +79,7 @@ public class PlayerShooting : MonoBehaviour
                 bullet.transform.position = shootSpot.position;
                 bullet.SetActive(true);
                 //обновление времени восстановления
-                _remaindtime = timeBetweenShoot;
+                _remaindTime = timeBetweenShoot;
                 //возврат пули в пул
                 ReturnToPool(bullet);
             }
@@ -91,6 +93,7 @@ public class PlayerShooting : MonoBehaviour
     public GameObject Preload()
     {
         GameObject item = Instantiate(bulletPrefab);
+        bulletPrefab.GetComponent<BulletDamage>().damage = GetComponentInChildren<WeaponBulletType>().GetBulletDamage();
         item.transform.parent = _bulletsStorage;
         return item;
     }
