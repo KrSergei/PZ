@@ -426,6 +426,7 @@ GameObject:
   m_Component:
   - component: {fileID: 178901848}
   - component: {fileID: 178901849}
+  - component: {fileID: 178901850}
   m_Layer: 0
   m_Name: ObjectPool
   m_TagString: Untagged
@@ -462,10 +463,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 56ed2cca59627cb4a9efb8d35b295189, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dropedBulletsStorage: {fileID: 0}
   bulletsStorage: {fileID: 229651695}
   _bulletPrefab: {fileID: 3728848153840559318, guid: 34ced165226e11442b3e61907ab8c1e4, type: 3}
-  _droppedbulletPrefab: {fileID: 2122447743}
+--- !u!114 &178901850
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 178901847}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a912e6ae3bf35a344b417002d779e816, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bulletsStorage: {fileID: 2122447744}
+  _droppedBulletPrefab: {fileID: 0}
+  _droppedBullet: {fileID: 11400000, guid: df8fcba92e62e7346be52a57424869f5, type: 2}
 --- !u!1 &229651694
 GameObject:
   m_ObjectHideFlags: 0
@@ -1583,7 +1597,6 @@ GameObject:
   m_Component:
   - component: {fileID: 911242222}
   - component: {fileID: 911242223}
-  - component: {fileID: 911242224}
   m_Layer: 3
   m_Name: "\u043E\u0440\u0443\u0436\u0438\u0435"
   m_TagString: Untagged
@@ -1622,18 +1635,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   offset: 0
   weaponSpriteRenderer: {fileID: 19061286}
---- !u!114 &911242224
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 911242221}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6df6905162f4bde41969b76d221b6362, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &913798317
 GameObject:
   m_ObjectHideFlags: 0
