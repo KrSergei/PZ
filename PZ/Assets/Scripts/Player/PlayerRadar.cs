@@ -41,13 +41,13 @@ public class PlayerRadar : MonoBehaviour
 
     private void FixedUpdate()
     {
+
         //Пуск луча если, количество обнаруженных монстров больше 0
         if (_lokedMonster > 0)
         {
             RaycastHit2D hit = Physics2D.Raycast(shootSpot.position, shootSpot.transform.right, radiusRadar * 5, layer);
             //Если луч столкнулся с коллайдером монстра, то сделать выстрел
-            if (hit.collider != null) 
-                onLokedMonster?.Invoke();
+            if (hit.collider != null) onLokedMonster?.Invoke();
         }
     } 
 
