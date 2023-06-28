@@ -24,7 +24,7 @@ public class PlayerShooting : MonoBehaviour
     #region private method
     private void Awake()
     {
-        //получение преафба пули текущего оружия
+        //получение префаба пули текущего оружия
         bulletPrefab = GetComponentInChildren<WeaponBulletType>().GetBulletPrefab();
         _bulletPool = new PoolBase<GameObject>(Preload, GetAction, ReturnAction, BULLET_PRELOAD_COUNT);
         inventory = GetComponent<Inventory>();

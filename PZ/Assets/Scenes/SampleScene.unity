@@ -445,6 +445,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 2122447744}
   - {fileID: 229651695}
   m_Father: {fileID: 0}
   m_RootOrder: 3
@@ -461,9 +462,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 56ed2cca59627cb4a9efb8d35b295189, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bulletsSpotSpawn: {fileID: 913798318}
+  dropedBulletsStorage: {fileID: 0}
   bulletsStorage: {fileID: 229651695}
   _bulletPrefab: {fileID: 3728848153840559318, guid: 34ced165226e11442b3e61907ab8c1e4, type: 3}
+  _droppedbulletPrefab: {fileID: 2122447743}
 --- !u!1 &229651694
 GameObject:
   m_ObjectHideFlags: 0
@@ -493,7 +495,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 178901848}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &261352753
 PrefabInstance:
@@ -3518,3 +3520,34 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ebfdca309b200a1478fd2f0e05f1ae44, type: 3}
+--- !u!1 &2122447743
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2122447744}
+  m_Layer: 0
+  m_Name: DropedBulletStorage
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2122447744
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2122447743}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 178901848}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
