@@ -1,7 +1,6 @@
 using ObjecPool;
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditor.U2D.Path.GUIFramework;
 using UnityEngine;
 
 public class Pool : MonoBehaviour
@@ -33,30 +32,6 @@ public class Pool : MonoBehaviour
         //возврат в пул
         _droppedItems.Return(item);
     }
-
-    //public GameObject GetItemFromPool()
-    //{
-    //    GameObject item;
-    //    if (_droppedItems.Count == 0)
-    //    {
-    //        item = Instantiate(_droppedItemPrefab);
-    //        _droppedItems.Enqueue(item);
-
-    //        return item;
-    //    }
-    //    else
-    //    {
-    //        item = _droppedItems.Dequeue();
-    //        item.transform.parent = null;
-    //        return item;
-    //    }
-    //}
-
-    //public void AddItemToPool(GameObject item)
-    //{
-    //    item.transform.parent = bulletsStorage;
-    //    _droppedItems.Enqueue(item);
-    //}
 
     public GameObject Preload()
     {
