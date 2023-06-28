@@ -15,4 +15,4 @@ MonoBehaviour:
   prefab: {fileID: 3728848153840559318, guid: 34ced165226e11442b3e61907ab8c1e4, type: 3}
   type: 0
   decsription: 
-  damageValue: 10
+  damageValue: 1
