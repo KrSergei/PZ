@@ -23,7 +23,6 @@ public class ObjectPool : MonoBehaviour
     public GameObject GetBulletQueue()
     {
         GameObject bullet;
-        Debug.Log("Bullet count = " + _bullets.Count);
         if (_bullets.Count == 0)
         {
             bullet = Instantiate(_bulletPrefab);

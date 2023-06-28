@@ -10,9 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6c524f97940f3b04bba46e733954d1f0, type: 3}
-  m_Name: Ammo
+  m_Name: Ammo_AK74
   m_EditorClassIdentifier: 
   prefab: {fileID: 7065212896535653408, guid: 08680e4c4659fbf4a81194479f35d10c, type: 3}
   type: 0
   decsription: 
+  prefabDealingDamage: {fileID: 3728848153840559318, guid: 34ced165226e11442b3e61907ab8c1e4, type: 3}
   damageValue: 10
