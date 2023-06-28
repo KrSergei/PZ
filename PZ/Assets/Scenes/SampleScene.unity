@@ -1541,8 +1541,8 @@ CapsuleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_Size: {x: 0.29, y: 0.73}
+  m_Offset: {x: 0.0021449924, y: 0}
+  m_Size: {x: 0.29428995, y: 0.73}
   m_Direction: 0
 --- !u!114 &587385154
 MonoBehaviour:
@@ -2154,7 +2154,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1275869555
 Transform:
   m_ObjectHideFlags: 0
@@ -3029,6 +3029,8 @@ GameObject:
   - component: {fileID: 1648994437}
   - component: {fileID: 1648994439}
   - component: {fileID: 1648994440}
+  - component: {fileID: 1648994442}
+  - component: {fileID: 1648994441}
   m_Layer: 6
   m_Name: Monster
   m_TagString: Monster
@@ -3196,6 +3198,36 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   items: {fileID: 0}
+--- !u!58 &1648994441
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1648994433}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 3
+--- !u!114 &1648994442
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1648994433}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: edb3f6d08ede46b48818fdd140c60cee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  radiusRadar: 5
+  _collider: {fileID: 0}
 --- !u!4 &1652831304 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8346742083178785769, guid: 51d0cc38445435e49b71d2e902c3f257, type: 3}

@@ -11,11 +11,18 @@ public class InventoryObject : ScriptableObject
         bool hasItem = false;
         for (int i = 0; i < container.Count; i++)
         {
-
-            if (container[i].item == null)
+            try
             {
-                container[i] = new InvemtorySlot(item, amount);
-                hasItem = true;
+                if (container[i].item == null)
+                {
+                    container[i] = new InvemtorySlot(item, amount);
+                    hasItem = true;
+                    break;
+                }
+
+            }
+            catch (NullReferenceException)
+            {
                 break;
             }
 
