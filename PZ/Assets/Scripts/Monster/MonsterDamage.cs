@@ -7,7 +7,7 @@ public class MonsterDamage : MonoBehaviour
 
     void Start()
     {
-        _collider=  GetComponent<CapsuleCollider2D>();
+        _collider = GetComponent<CapsuleCollider2D>();
     }
     private void OnTriggerEnter2D(Collider2D collaider)
     {
