@@ -13,7 +13,7 @@ public class PlayerShooting : MonoBehaviour
     public GameObject bulletPrefab;
     public float offsetRotateBullet;
     public float timeBetweenShoot;
-    public Inventory inventory;
+    public Inventory inventory;   
 
     [SerializeField] private float _remaindTime;
     [SerializeField] private bool _canShoot;
