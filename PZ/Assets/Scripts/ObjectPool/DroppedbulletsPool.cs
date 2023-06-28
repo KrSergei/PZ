@@ -6,13 +6,15 @@ public class DroppedBulletsPool : MonoBehaviour
     public static DroppedBulletsPool instance;
 
     public Transform bulletsStorage;
-    [SerializeField] private GameObject _droppedBulletPrefab;   
+    [SerializeField] private GameObject _droppedBulletPrefab;
+    [SerializeField] private AmmoObject _droppedBullet;
 
     private Queue<GameObject> _droppedBullets = new Queue<GameObject>();
 
     private void Awake()
     {
         if (instance == null) instance = this;
+        _droppedBulletPrefab = _droppedBullet.prefab;
     }
 
     /// <summary>
