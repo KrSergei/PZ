@@ -13,7 +13,7 @@ public class MonsterRadar : MonoBehaviour
     {
         _collider.radius = radiusRadar;
     }
- 
+    
     private void OnTriggerEnter2D(Collider2D collider)
     {
         if (collider != null)
