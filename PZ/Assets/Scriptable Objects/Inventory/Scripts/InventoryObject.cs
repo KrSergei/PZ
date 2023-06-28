@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -10,13 +11,21 @@ public class InventoryObject : ScriptableObject
         bool hasItem = false;
         for (int i = 0; i < container.Count; i++)
         {
-            if (container[i].item == null)
+            try
             {
-                container[i] = new InvemtorySlot(item, amount);
-                //container[i].AddAmount(amount);
-                hasItem = true;
+                if (container[i].item == null)
+                {
+                    container[i] = new InvemtorySlot(item, amount);
+                    hasItem = true;
+                    break;
+                }
+            }
+            catch (NullReferenceException)
+            {
+
                 break;
             }
+            
             if (container[i].item == item)
             {
                 container[i].AddAmount(amount);
@@ -50,7 +59,7 @@ public class InvemtorySlot
         this.amount = amount;
     }
     public void AddAmount(int value) {
-        Debug.Log("Add amount");
+
         amount += value;
     } 
     public void SubstractionAmount(int value) => amount -= value;
