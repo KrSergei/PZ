@@ -5,7 +5,7 @@ public class MonsterHealth : MonoBehaviour
 {
     public UnityEvent onHealthOver;
     public HealthBar healthBar;
-
+    public GameManager gm;
     [SerializeField] private float health, maxHealth;
 
     public float Health { get => health; set => health = value; }
@@ -14,6 +14,7 @@ public class MonsterHealth : MonoBehaviour
     {
         healthBar = GetComponentInChildren<HealthBar>();
         healthBar.MaxHealth = health;
+        gm = GameManager.instance;
     }
 
     private void Start()
@@ -28,6 +29,8 @@ public class MonsterHealth : MonoBehaviour
         if (Health <= 0) 
         {
             onHealthOver?.Invoke();
+  
+
             //toDo return to pool
             gameObject.SetActive(false);
         }
