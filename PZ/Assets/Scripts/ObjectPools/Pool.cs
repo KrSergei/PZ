@@ -1,4 +1,5 @@
 using ObjecPool;
+using System;
 using UnityEngine;
 
 public class Pool : MonoBehaviour
@@ -17,18 +18,18 @@ public class Pool : MonoBehaviour
 
     public void Init(Vector3 position)
     {
-        //GetItem(position);
+        GetItem(position);
     }
     public GameObject GetPrefab()
     {
         return _spawnedItem.prefab;
     }
 
-    public void GetItem(Transform position)
+    public void GetItem(Vector3 position)
     {
         //Создание объекта
         GameObject item = _spawnedItems.Get();
-        item.transform.position = position.position;
+        item.transform.position = position;
         item.SetActive(true);
         //возврат в пул
         _spawnedItems.Return(item);

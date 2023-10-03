@@ -647,7 +647,7 @@ Canvas:
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 25
   m_SortingLayerID: 0
-  m_SortingOrder: 10
+  m_SortingOrder: 50
   m_TargetDisplay: 0
 --- !u!224 &262811924
 RectTransform:
@@ -1446,7 +1446,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 425086773}
-  smooth: 0
+  smooth: 0.1
   offset: {x: 0, y: 0, z: -10}
 --- !u!1 &564789417
 GameObject:
@@ -1954,7 +1954,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startAmount: 3
   pool: {fileID: 1350024476}
-  monsterSpawner: {fileID: 2072613551}
+  monsterSpawnArea: {fileID: 2072613551}
 --- !u!1001 &1053591317
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -9,7 +9,7 @@ public class MonsterDropItem : MonoBehaviour
     }
     public void DropRandomItem()
     {
-        items.DropChoicedItemsPool(GetRandom(), transform);
+        items.DropChoicedItemsPool(GetRandom(), transform.position);
     }
 
     private int GetRandom()

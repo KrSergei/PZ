@@ -26,7 +26,7 @@ public class Items : MonoBehaviour
     /// </summary>
     /// <param name="index"></param>
     /// <param name="position"></param>
-    public void DropChoicedItemsPool(int index, Transform position)
+    public void DropChoicedItemsPool(int index, Vector3 position)
     {
         canDpopedItemsPools[index].GetComponent<Pool>().GetItem(position);
     }
