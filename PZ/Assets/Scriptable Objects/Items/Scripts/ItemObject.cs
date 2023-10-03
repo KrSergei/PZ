@@ -3,7 +3,8 @@ public enum ItemType
 {
     Ammo,
     Equipment,
-    Defaault
+    Defaault,
+    Monster
 }
 
 public abstract class ItemObject : ScriptableObject
