@@ -7,7 +7,6 @@ using System;
 public class DisplayInventory : MonoBehaviour
 {
     public InventoryObject inventory;
-    public int slotsCount;
     public GameObject slotPrefab;
     public List<GameObject> createdSlots = new List<GameObject>();
     public int x_Space_Beetwen_Items;
@@ -18,14 +17,15 @@ public class DisplayInventory : MonoBehaviour
     private void Start()
     {
         CreateDisplay();
+        
     }
 
     /// <summary>
     /// Стартовое создание инвентаря
     /// </summary>
-    private void CreateDisplay()
+    public void CreateDisplay()
     {
-        for (int i = 0; i < slotsCount; i++)
+        for (int i = 0; i < inventory.GetInventoryCapacity(); i++)
         {
             GameObject item = Instantiate(slotPrefab, Vector2.zero, Quaternion.identity, transform);
             item.GetComponent<ButtonDelete>().indexButton = i;
@@ -66,7 +66,7 @@ public class DisplayInventory : MonoBehaviour
         }
         catch (Exception)
         {
-            throw;
+            return null;
         }
     }
 
@@ -86,7 +86,7 @@ public class DisplayInventory : MonoBehaviour
     public void UpdateInventory()
     {
         for (int i = 0; i < inventory.container.Count; i++)
-        {
+        {            
             try
             {
                 if (itemDisplayed.ContainsKey(inventory.container[i]))
@@ -99,7 +99,7 @@ public class DisplayInventory : MonoBehaviour
                         itemDisplayed[inventory.container[i]].GetComponentInChildren<TextMeshProUGUI>().text = "";
                 }
                 else
-                {
+                {                                       
                     GameObject item = createdSlots[i];
                     //отрисовка иконки предмета в слоте
                     item.gameObject.GetComponent<Image>().sprite = GetIconItem(inventory.container[i]);
@@ -115,7 +115,7 @@ public class DisplayInventory : MonoBehaviour
             }
             catch (ArgumentNullException)
             {
-                break;
+                return;
             }
         }
     }

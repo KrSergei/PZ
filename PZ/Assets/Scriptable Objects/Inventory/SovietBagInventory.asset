@@ -12,4 +12,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 46968b0a2ed6c7d45b562ab04fc6cd7f, type: 3}
   m_Name: SovietBagInventory
   m_EditorClassIdentifier: 
-  container: []
+  "inventory\u0421apcity": 6
+  container:
+  - item: {fileID: 0}
+    amount: 0
+  - item: {fileID: 0}
+    amount: 0
+  - item: {fileID: 0}
+    amount: 0
+  - item: {fileID: 0}
+    amount: 0
+  - item: {fileID: 0}
+    amount: 0
+  - item: {fileID: 0}
+    amount: 0
