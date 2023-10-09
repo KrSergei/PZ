@@ -17,8 +17,7 @@ public class Inventory : MonoBehaviour
         var _item = item.GetComponent<Item>();
         if (_item)
         {
-            inventory.AddItem(_item.item, 1);
-            //ToDo back to objectpool
+            inventory.AddItem(_item.item);
             item.SetActive(false);
         }
     }
@@ -60,11 +59,6 @@ public class Inventory : MonoBehaviour
             inventory.RemoveItem(indexSlot);
             onAmmoOver?.Invoke(indexSlot);
         } 
-    }
-
-    private void OnApplicationQuit()
-    {
-        inventory.container.Clear();
     }
 }
 [Serializable]
