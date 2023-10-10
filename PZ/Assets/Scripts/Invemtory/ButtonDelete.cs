@@ -5,9 +5,10 @@ using UnityEngine.UI;
 
 public class ButtonDelete : MonoBehaviour
 {
+
     [Header("Event")]
     [SerializeField] private EvenInt onPressButtonDelete;
-    
+
     public InventoryObject inventory;
     public DisplayInventory inventoryDisplay;
 
@@ -39,7 +40,7 @@ public class ButtonDelete : MonoBehaviour
     /// <summary>
     /// Тамер для деактивации кнопки
     /// </summary>
-    private  async void Timer()
+    private async void Timer()
     {
         await UniTask.Delay((int)actionTimeButton * 1000);
         DeactivateButton();

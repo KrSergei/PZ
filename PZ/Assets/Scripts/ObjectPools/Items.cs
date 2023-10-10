@@ -4,7 +4,7 @@ using UnityEngine;
 public class Items : MonoBehaviour
 {
     public int PRELOAD_COUNT = 10;
-    public List<GameObject> canDpopedItemsPools = new List<GameObject>();  
+    public List<GameObject> canDpopedItemsPools = new();  
 
     private void Awake()
     {

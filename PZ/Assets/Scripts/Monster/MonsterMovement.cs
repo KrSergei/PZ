@@ -11,7 +11,7 @@ public class MonsterMovement : MonoBehaviour
         if (isTargetDetected)
         {
             Vector3 direction = targetPosition.transform.position - transform.position;
-            transform.Translate(direction * speed * Time.deltaTime, Space.World);
+            transform.Translate(speed * Time.deltaTime * direction, Space.World);
             _currentDirection = direction;
         }
     }

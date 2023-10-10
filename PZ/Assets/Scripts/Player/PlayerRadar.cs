@@ -56,7 +56,7 @@ public class PlayerRadar : MonoBehaviour
         //инкремент количества обнаруживаемых монстров
         if (collider != null)
         {
-            if (collider.TryGetComponent<Monster>(out var monster))
+            if (collider.TryGetComponent<Monster>(out _))
             {
                 _lokedMonster++;
             }
@@ -68,7 +68,7 @@ public class PlayerRadar : MonoBehaviour
         //декремент количества обнаруживаемых монстров
         if (collider != null)
         {
-            if (collider.TryGetComponent<Monster>(out var monster))
+            if (collider.TryGetComponent<Monster>(out _))
             {
                 _lokedMonster--;
             }

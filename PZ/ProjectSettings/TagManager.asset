@@ -12,6 +12,7 @@ TagManager:
   - 5.45x39
   - MilitaryHelmet
   - SovietBag
+  - Obstacle
   layers:
   - Default
   - TransparentFX
@@ -21,7 +22,7 @@ TagManager:
   - UI
   - Monster
   - Collectible
-  - 
+  - Obstacle
   - 
   - 
   - 
