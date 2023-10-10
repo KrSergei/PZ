@@ -7,7 +7,7 @@ public class ButtonDelete : MonoBehaviour
 {
     [Header("Event")]
     //[SerializeField] private EvenInt onPressedButtonDelete;
-    
+
     public InventoryObject inventory;
     public DisplayInventory inventoryDisplay;
 
