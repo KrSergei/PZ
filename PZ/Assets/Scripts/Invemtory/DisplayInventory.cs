@@ -3,16 +3,19 @@ using TMPro;
 using UnityEngine.UI;
 using System.Collections.Generic;
 using System;
+using static UnityEditor.Progress;
 
 public class DisplayInventory : MonoBehaviour
 {
     public InventoryObject inventory;
     public GameObject slotPrefab;
     public List<GameObject> createdSlots = new();
+    public List<GameObject> _addedItems = new();
     public int x_Space_Beetwen_Items;
     public int number_of_column;
-
+    [SerializeField]
     private Dictionary<InvemtorySlot, GameObject> itemDisplayed = new();
+
 
     private void Start()
     {
@@ -87,7 +90,8 @@ public class DisplayInventory : MonoBehaviour
         try
         {
             for (int i = 0; i < inventory.container.Count; i++)
-            {
+            {                
+
                 if (i >= inventory.GetInventoryCapacity()) return;
 
                 if (itemDisplayed.ContainsKey(inventory.container[i]))
@@ -98,6 +102,7 @@ public class DisplayInventory : MonoBehaviour
                         inventory.container[i].amount.ToString("n0");
                     else
                         itemDisplayed[inventory.container[i]].GetComponentInChildren<TextMeshProUGUI>().text = "";
+   
                 }
                 else
                 {
@@ -112,6 +117,7 @@ public class DisplayInventory : MonoBehaviour
                         item.GetComponentInChildren<TextMeshProUGUI>().text = "";
                     //добавление предмета в инвентарь
                     itemDisplayed.Add(inventory.container[i], item);
+                    _addedItems.Add(item);
                 }
             }
     }

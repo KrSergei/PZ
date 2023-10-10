@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class ButtonDelete : MonoBehaviour
 {
     [Header("Event")]
-    [SerializeField] private EvenInt onPressButtonDelete;
+    //[SerializeField] private EvenInt onPressedButtonDelete;
     
     public InventoryObject inventory;
     public DisplayInventory inventoryDisplay;
@@ -25,7 +25,7 @@ public class ButtonDelete : MonoBehaviour
         button.gameObject.SetActive(true);
         Timer();
     }
-    public void OnPreeedButton()
+    public void OnPressedButton()
     {
         inventory.RemoveItem(indexButton);
         inventoryDisplay.RemoveItem(indexButton);

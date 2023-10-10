@@ -7,7 +7,6 @@ public class Pool : MonoBehaviour
     public static Pool instance;
     public int PRELOAD_COUNT = 10;
     public Transform bulletsStorage;
-    [SerializeField] private GameObject _spawnedItemPrefab;
     [SerializeField] private ItemObject _spawnedItem;
     private PoolBase<GameObject> _spawnedItems;
     private void Awake()
@@ -41,6 +40,6 @@ public class Pool : MonoBehaviour
         item.transform.parent = transform;
         return item;
     }
-    public void GetAction(GameObject item) => _spawnedItem.prefab.gameObject.SetActive(true);
-    public void ReturnAction(GameObject item) => _spawnedItem.prefab.gameObject.SetActive(false);
+    public void GetAction(GameObject item) => _spawnedItem.prefab.SetActive(true);
+    public void ReturnAction(GameObject item) => _spawnedItem.prefab.SetActive(false);
 }

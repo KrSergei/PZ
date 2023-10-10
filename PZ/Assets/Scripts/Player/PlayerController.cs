@@ -1,10 +1,11 @@
 using UnityEngine;
 
+[RequireComponent(typeof(Rigidbody2D))]
 public class PlayerController : MonoBehaviour
 {
-    public float _speed; //скорость передвижения
-    public CharacterController characterController;
     public Joystick joystick;
+    public Rigidbody2D _rb;
+    public float force;
 
     public WeaponRotate weaponRotate;
 
@@ -16,7 +17,7 @@ public class PlayerController : MonoBehaviour
 
     void Start()
     {
-        characterController = GetComponent<CharacterController>();
+        _rb = GetComponent<Rigidbody2D>();
         weaponRotate = GetComponentInChildren<WeaponRotate>();
     }
 
@@ -29,9 +30,9 @@ public class PlayerController : MonoBehaviour
     private void FixedUpdate()
     {
         //Построение результируещего вектора направления
-        ResultDestination = new Vector3(_horizontal, _vertical, 0f);
+        ResultDestination = new Vector2(_horizontal, _vertical) * force * Time.fixedDeltaTime;
         //Задание движения игрока
-        characterController.Move(ResultDestination * _speed *  Time.fixedDeltaTime);
+        _rb.AddForce(ResultDestination);
         weaponRotate.RotateWeapon(joystick);
     }
 }
