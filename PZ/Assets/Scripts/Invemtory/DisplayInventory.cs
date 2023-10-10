@@ -16,8 +16,7 @@ public class DisplayInventory : MonoBehaviour
 
     private void Start()
     {
-        CreateDisplay();
-        
+        CreateDisplay();        
     }
 
     /// <summary>
