@@ -6,51 +6,41 @@ using UnityEngine;
 public class InventoryObject : ScriptableObject
 {
     public int inventoryÑapcity;
-    public List<InvemtorySlot> container = new List<InvemtorySlot>();
+    public List<InvemtorySlot> container = new();
     public void AddItem(ItemObject item, int amount = 1)
-    {  
-        bool hasItem = container.Exists(x => x.item == item);
-        if (hasItem)
+    {
+        bool hasItem = false;
+        hasItem = container.Exists(x => x.item == item);
+        try
         {
-            for (int i = 0; i < container.Count; i++)
+            if (hasItem)
             {
-                if (i == inventoryÑapcity - 1) return;
-                try
+                for (int i = 0; i < container.Count; i++)
                 {
                     if (container[i].item == item)
                     {
                         container[i].AddAmount(amount);
-                        hasItem = true;
                         return;
                     }
                 }
-                catch (NullReferenceException)
-                {
-                    return;
-                }
             }
-        }
-        else
-        {
-            for (int i = 0; i < container.Count; i++)
+            else
             {
-                if (i == inventoryÑapcity - 1) return;
-                try
+                for (int i = 0; i < container.Count; i++)
                 {
                     if (container[i].item == null)
                     {
                         container[i] = new InvemtorySlot(item, amount);
-                        hasItem = true;
                         return;
                     }
                 }
-                catch (NullReferenceException)
-                {
-                    return;
-                }
             }
         }
-        if (!hasItem) container.Add(new InvemtorySlot(item, amount));  
+        catch (NullReferenceException)
+        {
+            return;
+        }
+        if (!hasItem && container.Count < inventoryÑapcity) container.Add(new InvemtorySlot(item, amount));  
     }
 
 
