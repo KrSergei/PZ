@@ -21,8 +21,8 @@ public class MonsterRotate : MonoBehaviour
     /// </summary>
     private void Rotate()
     {
-        Vector3 currentdDstination = GetComponent<MonsterMovement>().GetCurrentDestination();
-        if (currentdDstination.x >= 0)
+        Vector3 currentDirection = GetComponent<MonsterMovement>().GetCurrentDestination();
+        if (currentDirection.x >= 0)
         {
             foreach (var renderer in _monsterRenderers) renderer.flipX = true;
         }
