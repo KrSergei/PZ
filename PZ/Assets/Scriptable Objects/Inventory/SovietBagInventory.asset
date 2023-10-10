@@ -13,16 +13,4 @@ MonoBehaviour:
   m_Name: SovietBagInventory
   m_EditorClassIdentifier: 
   "inventory\u0421apcity": 6
-  container:
-  - item: {fileID: 0}
-    amount: 0
-  - item: {fileID: 0}
-    amount: 0
-  - item: {fileID: 0}
-    amount: 0
-  - item: {fileID: 0}
-    amount: 0
-  - item: {fileID: 0}
-    amount: 0
-  - item: {fileID: 0}
-    amount: 0
+  container: []

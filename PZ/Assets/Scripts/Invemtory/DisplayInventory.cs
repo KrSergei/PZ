@@ -8,16 +8,15 @@ public class DisplayInventory : MonoBehaviour
 {
     public InventoryObject inventory;
     public GameObject slotPrefab;
-    public List<GameObject> createdSlots = new List<GameObject>();
+    public List<GameObject> createdSlots = new();
     public int x_Space_Beetwen_Items;
     public int number_of_column;
 
-    private Dictionary<InvemtorySlot, GameObject> itemDisplayed = new Dictionary<InvemtorySlot, GameObject>();
+    private Dictionary<InvemtorySlot, GameObject> itemDisplayed = new();
 
     private void Start()
     {
-        CreateDisplay();
-        
+        CreateDisplay();        
     }
 
     /// <summary>
@@ -33,7 +32,7 @@ public class DisplayInventory : MonoBehaviour
             if (i < inventory.container.Count)
             {
                 //отрисовка иконки предмета в слоте
-                item.gameObject.GetComponent<Image>().sprite = GetIconItem(inventory.container[i]);
+                item.GetComponent<Image>().sprite = GetIconItem(inventory.container[i]);
                 //вывод коичества предметов в слоте
                 item.GetComponentInChildren<TextMeshProUGUI>().text = inventory.container[i].amount.ToString("n0");
                 //добавление предмета в инвентарь
@@ -77,7 +76,7 @@ public class DisplayInventory : MonoBehaviour
     /// <returns></returns>
     private bool AmountItem(int amount)
     {
-       return amount > 1 ? true : false;
+       return amount > 1;
     }
 
     /// <summary>
@@ -85,10 +84,12 @@ public class DisplayInventory : MonoBehaviour
     /// </summary>
     public void UpdateInventory()
     {
-        for (int i = 0; i < inventory.container.Count; i++)
-        {            
-            try
+        try
+        {
+            for (int i = 0; i < inventory.container.Count; i++)
             {
+                if (i >= inventory.GetInventoryCapacity()) return;
+
                 if (itemDisplayed.ContainsKey(inventory.container[i]))
                 {
                     //ѕроверка на количество, если 2 и более, то изменение количества, иначе пуста€ строка.
@@ -99,10 +100,10 @@ public class DisplayInventory : MonoBehaviour
                         itemDisplayed[inventory.container[i]].GetComponentInChildren<TextMeshProUGUI>().text = "";
                 }
                 else
-                {                                       
+                {
                     GameObject item = createdSlots[i];
                     //отрисовка иконки предмета в слоте
-                    item.gameObject.GetComponent<Image>().sprite = GetIconItem(inventory.container[i]);
+                    item.GetComponent<Image>().sprite = GetIconItem(inventory.container[i]);
                     //ѕроверка на количество, если 2 и более, то изменение количества, иначе пуста€ строка.
                     if (AmountItem(inventory.container[i].amount))
                         //вывод коичества предметов в слоте
@@ -113,10 +114,10 @@ public class DisplayInventory : MonoBehaviour
                     itemDisplayed.Add(inventory.container[i], item);
                 }
             }
-            catch (ArgumentNullException)
-            {
-                return;
-            }
+    }
+        catch (ArgumentOutOfRangeException)
+        {
+            return;
         }
     }
 
