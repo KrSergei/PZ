@@ -2040,6 +2040,17 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 51d0cc38445435e49b71d2e902c3f257, type: 3}
+--- !u!114 &1102063634 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6090830770156458587, guid: f1b1bba2867d5514ea9c2c2dbe96ffc3, type: 3}
+  m_PrefabInstance: {fileID: 6090830769774108007}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 57bcf7d705b8ee047b2cfbf9ef261b4e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1287189924
 GameObject:
   m_ObjectHideFlags: 0
@@ -93667,12 +93678,20 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 229651695}
     - target: {fileID: 6090830770260497445, guid: f1b1bba2867d5514ea9c2c2dbe96ffc3, type: 3}
+      propertyPath: inventory
+      value: 
+      objectReference: {fileID: 1102063634}
+    - target: {fileID: 6090830770260497445, guid: f1b1bba2867d5514ea9c2c2dbe96ffc3, type: 3}
+      propertyPath: mask.m_Bits
+      value: 128
+      objectReference: {fileID: 0}
+    - target: {fileID: 6090830770260497445, guid: f1b1bba2867d5514ea9c2c2dbe96ffc3, type: 3}
       propertyPath: displayInventory
       value: 
       objectReference: {fileID: 617490888}
     - target: {fileID: 6090830770260497445, guid: f1b1bba2867d5514ea9c2c2dbe96ffc3, type: 3}
       propertyPath: onCollisionPlayer.m_PersistentCalls.m_Calls.Array.size
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 6090830770260497445, guid: f1b1bba2867d5514ea9c2c2dbe96ffc3, type: 3}
       propertyPath: onCollisionPlayer.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
@@ -93700,7 +93719,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6090830770260497445, guid: f1b1bba2867d5514ea9c2c2dbe96ffc3, type: 3}
       propertyPath: onCollisionPlayer.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
-      value: CancelInvoke
+      value: UpdateInventory
       objectReference: {fileID: 0}
     - target: {fileID: 6090830770260497445, guid: f1b1bba2867d5514ea9c2c2dbe96ffc3, type: 3}
       propertyPath: onCollisionPlayer.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
@@ -93708,7 +93727,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6090830770260497445, guid: f1b1bba2867d5514ea9c2c2dbe96ffc3, type: 3}
       propertyPath: onCollisionPlayer.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
-      value: UnityEngine.MonoBehaviour, UnityEngine
+      value: DisplayInventory, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 6090830770260497445, guid: f1b1bba2867d5514ea9c2c2dbe96ffc3, type: 3}
       propertyPath: onCollisionPlayer.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName

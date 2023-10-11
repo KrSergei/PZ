@@ -7,35 +7,16 @@ public class InventoryObject : ScriptableObject
 {
     public int inventory—apcity;
     public List<InvemtorySlot> container = new();
+    [SerializeField]
+    private int _updatedSlotIndex;
+    [SerializeField]
+    private bool _isNewItem;
+
     public void AddItem(ItemObject item, int amount = 1)
     {
         bool hasItem = false;
-        
-
         try
-        {
-            #region var1
-            //for (int i = 0; i < container.Count; i++)
-            //{
-            //    if (container[i].item == item)
-            //    {
-            //        container[i].AddAmount(amount);
-            //        hasItem = true;
-            //        return;
-            //    }
-            //    else
-            //    {
-            //        if (container[i].item == null)
-            //        {
-            //            container[i] = new InvemtorySlot(item, amount);
-            //            hasItem = true;
-            //            return;
-            //        }
-            //    }
-            //}
-            #endregion
-
-            #region var2
+        {           
             hasItem = container.Exists(x => x.item == item);
             if (hasItem)
             {
@@ -43,8 +24,9 @@ public class InventoryObject : ScriptableObject
                 {
                     if (container[i].item == item)
                     {
+                        _updatedSlotIndex = i;
+                        _isNewItem = false;
                         container[i].AddAmount(amount);
-                        //hasItem = true;
                         return;
                     }
                 }
@@ -55,13 +37,13 @@ public class InventoryObject : ScriptableObject
                 {
                     if (container[i].item == null)
                     {
+                        _updatedSlotIndex = i;
+                        _isNewItem = true;
                         container[i] = new InvemtorySlot(item, amount);
-                        //hasItem = true;
                         return;
                     }
                 }
             }
-            #endregion
         }
         catch (NullReferenceException)
         {
@@ -70,7 +52,15 @@ public class InventoryObject : ScriptableObject
         if (!hasItem && container.Count < inventory—apcity) container.Add(new InvemtorySlot(item, amount));  
     }
 
+    public int GetUpdatedSlotIndex()
+    {
+        return _updatedSlotIndex;
+    }
 
+    public bool IsNewItem()
+    {
+        return _isNewItem;
+    }
     public void RemoveItem(int indexSlot) 
     {
         if (container.Count == 0 || indexSlot > container.Count) return; 
