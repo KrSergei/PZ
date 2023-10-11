@@ -16,7 +16,6 @@ public class DisplayInventory : MonoBehaviour
     [SerializeField]
     private Dictionary<InvemtorySlot, GameObject> itemDisplayed = new();
 
-
     private void Start()
     {
         CreateDisplay();        
