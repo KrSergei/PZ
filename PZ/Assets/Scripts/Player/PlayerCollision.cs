@@ -3,14 +3,18 @@ using UnityEngine.Events;
 
 public class PlayerCollision : MonoBehaviour
 {
-    [Header("Events")]
-    [SerializeField] private EvenGameObj onCollisionPlayer;
-    [SerializeField] private EvenFloat onTakeDamage;
 
+    public DisplayInventory displayInventory;
     
+    [Header("Events")]
+    [SerializeField] private EventGameObj onCollisionPlayer;
+    [SerializeField] private EventFloat onTakeDamage;
+
+
     private void OnTriggerEnter2D(Collider2D collaider)
     {
-        onCollisionPlayer.Invoke(collaider.gameObject);
+        onCollisionPlayer?.Invoke(collaider.gameObject);
+        //displayInventory.UpdateInventory(collaider.gameObject);
     }
 
     public void TakeDamage(float damage)
@@ -20,7 +24,7 @@ public class PlayerCollision : MonoBehaviour
 }
 
 [System.Serializable]
-public class EvenGameObj : UnityEvent<GameObject> { }
+public class EventGameObj : UnityEvent<GameObject> { }
 [System.Serializable]
-public class EvenFloat : UnityEvent<float> { }
+public class EventFloat : UnityEvent<float> { }
 

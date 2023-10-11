@@ -10,44 +10,20 @@ public class InventoryObject : ScriptableObject
     public void AddItem(ItemObject item, int amount = 1)
     {
         bool hasItem = false;
-        //hasItem = container.Exists(x => x.item == item);
+        
 
         try
         {
-            for (int i = 0; i < container.Count; i++)
-            {
-                if (container[i].item == item)
-                {
-                    container[i].AddAmount(amount);
-                    hasItem = true;
-                    return;
-                }
-                else
-                {
-                    if (container[i].item == null)
-                    {
-                        container[i] = new InvemtorySlot(item, amount);
-                        hasItem = true;
-                        return;
-                    }
-                }
-            }
-
-            //if (hasItem)
+            #region var1
+            //for (int i = 0; i < container.Count; i++)
             //{
-            //    for (int i = 0; i < container.Count; i++)
+            //    if (container[i].item == item)
             //    {
-            //        if (container[i].item == item)
-            //        {
-            //            container[i].AddAmount(amount);
-            //            hasItem = true;
-            //            return;
-            //        }
+            //        container[i].AddAmount(amount);
+            //        hasItem = true;
+            //        return;
             //    }
-            //}
-            //else
-            //{
-            //    for (int i = 0; i < container.Count; i++)
+            //    else
             //    {
             //        if (container[i].item == null)
             //        {
@@ -57,6 +33,35 @@ public class InventoryObject : ScriptableObject
             //        }
             //    }
             //}
+            #endregion
+
+            #region var2
+            hasItem = container.Exists(x => x.item == item);
+            if (hasItem)
+            {
+                for (int i = 0; i < container.Count; i++)
+                {
+                    if (container[i].item == item)
+                    {
+                        container[i].AddAmount(amount);
+                        //hasItem = true;
+                        return;
+                    }
+                }
+            }
+            else
+            {
+                for (int i = 0; i < container.Count; i++)
+                {
+                    if (container[i].item == null)
+                    {
+                        container[i] = new InvemtorySlot(item, amount);
+                        //hasItem = true;
+                        return;
+                    }
+                }
+            }
+            #endregion
         }
         catch (NullReferenceException)
         {

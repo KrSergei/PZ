@@ -1678,9 +1678,9 @@ MonoBehaviour:
   inventory: {fileID: 11400000, guid: cd5e55b39a500e949b8938033fe6e37b, type: 2}
   slotPrefab: {fileID: 6311533134261437718, guid: 04eb4a6b7e5db074092698089c3ed7c5, type: 3}
   createdSlots: []
-  _addedItems: []
   x_Space_Beetwen_Items: 120
   number_of_column: 6
+  itemDisplayed: []
 --- !u!4 &627094148 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5755016938706202304, guid: 08680e4c4659fbf4a81194479f35d10c, type: 3}
@@ -93507,11 +93507,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 5689973055998565080, guid: 18246005bffa764488b29db2dc2dde4b, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5689973055998565080, guid: 18246005bffa764488b29db2dc2dde4b, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5689973056936883384, guid: 18246005bffa764488b29db2dc2dde4b, type: 3}
       propertyPath: m_RootOrder
@@ -93563,7 +93563,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5689973056936883389, guid: 18246005bffa764488b29db2dc2dde4b, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 18246005bffa764488b29db2dc2dde4b, type: 3}
@@ -93634,6 +93634,26 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 6090830770156458584, guid: f1b1bba2867d5514ea9c2c2dbe96ffc3, type: 3}
+      propertyPath: m_Size.x
+      value: 0.35702333
+      objectReference: {fileID: 0}
+    - target: {fileID: 6090830770156458584, guid: f1b1bba2867d5514ea9c2c2dbe96ffc3, type: 3}
+      propertyPath: m_Size.y
+      value: 0.79221106
+      objectReference: {fileID: 0}
+    - target: {fileID: 6090830770156458584, guid: f1b1bba2867d5514ea9c2c2dbe96ffc3, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6090830770156458584, guid: f1b1bba2867d5514ea9c2c2dbe96ffc3, type: 3}
+      propertyPath: m_Offset.x
+      value: 0.00029967725
+      objectReference: {fileID: 0}
+    - target: {fileID: 6090830770156458584, guid: f1b1bba2867d5514ea9c2c2dbe96ffc3, type: 3}
+      propertyPath: m_Offset.y
+      value: -0.034886837
+      objectReference: {fileID: 0}
     - target: {fileID: 6090830770156458587, guid: f1b1bba2867d5514ea9c2c2dbe96ffc3, type: 3}
       propertyPath: onAmmoOver.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -93647,12 +93667,52 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 229651695}
     - target: {fileID: 6090830770260497445, guid: f1b1bba2867d5514ea9c2c2dbe96ffc3, type: 3}
+      propertyPath: displayInventory
+      value: 
+      objectReference: {fileID: 617490888}
+    - target: {fileID: 6090830770260497445, guid: f1b1bba2867d5514ea9c2c2dbe96ffc3, type: 3}
+      propertyPath: onCollisionPlayer.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6090830770260497445, guid: f1b1bba2867d5514ea9c2c2dbe96ffc3, type: 3}
+      propertyPath: onCollisionPlayer.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6090830770260497445, guid: f1b1bba2867d5514ea9c2c2dbe96ffc3, type: 3}
+      propertyPath: onCollisionPlayer.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6090830770260497445, guid: f1b1bba2867d5514ea9c2c2dbe96ffc3, type: 3}
+      propertyPath: onCollisionPlayer.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 617490888}
+    - target: {fileID: 6090830770260497445, guid: f1b1bba2867d5514ea9c2c2dbe96ffc3, type: 3}
       propertyPath: onCollisionPlayer.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
       objectReference: {fileID: 617490888}
     - target: {fileID: 6090830770260497445, guid: f1b1bba2867d5514ea9c2c2dbe96ffc3, type: 3}
       propertyPath: onCollisionPlayer.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6090830770260497445, guid: f1b1bba2867d5514ea9c2c2dbe96ffc3, type: 3}
+      propertyPath: onCollisionPlayer.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: CancelInvoke
+      objectReference: {fileID: 0}
+    - target: {fileID: 6090830770260497445, guid: f1b1bba2867d5514ea9c2c2dbe96ffc3, type: 3}
+      propertyPath: onCollisionPlayer.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: CancelInvoke
+      objectReference: {fileID: 0}
+    - target: {fileID: 6090830770260497445, guid: f1b1bba2867d5514ea9c2c2dbe96ffc3, type: 3}
+      propertyPath: onCollisionPlayer.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: UnityEngine.MonoBehaviour, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 6090830770260497445, guid: f1b1bba2867d5514ea9c2c2dbe96ffc3, type: 3}
+      propertyPath: onCollisionPlayer.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
+      value: UnityEngine.MonoBehaviour, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 6090830770260497445, guid: f1b1bba2867d5514ea9c2c2dbe96ffc3, type: 3}
+      propertyPath: onCollisionPlayer.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f1b1bba2867d5514ea9c2c2dbe96ffc3, type: 3}
