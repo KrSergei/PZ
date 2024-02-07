@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: BulletproofCloakWrist
   m_EditorClassIdentifier: 
   prefab: {fileID: 8244695423923054272, guid: 4d1fd551d1027fa49bf12bf36363aa5c, type: 3}
+  itemIcon: {fileID: 21300000, guid: 0e06a0418c1fb7a4abedb03ea9c66359, type: 3}
   type: 1
   decsription: 
   attackBonusValue: 0

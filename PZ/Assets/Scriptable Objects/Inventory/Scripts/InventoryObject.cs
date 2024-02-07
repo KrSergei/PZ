@@ -7,39 +7,54 @@ public class InventoryObject : ScriptableObject
 {
     public int inventoryÑapcity;
     public List<InvemtorySlot> container = new();
-    public void AddItem(ItemObject item, int amount = 1)
+
+    public void AddItem(ItemObject item, out int index, out int totalAmountItem, int amount = 1)
     {
         bool hasItem = false;
-
+        index = 0;
+        totalAmountItem = amount;
         try
         {
-            for (int i = 0; i < container.Count; i++)
+            if (hasItem == false)
             {
-                if (container[i].item == item)
+                for (int i = 0; i < container.Count; i++)
                 {
-                    container[i].AddAmount(amount);
-                    hasItem = true;
-                    return;
-                }
-                else
-                {
-                    if (container[i].item == null)
+                    if (container[i].item == item)
                     {
-                        container[i] = new InvemtorySlot(item, amount);
                         hasItem = true;
-                        return;
+                        container[i].AddAmount(amount);
+                        index = i;
+                        totalAmountItem = container[i].amount;
+                    }
+                    else
+                    {
+                        if (container[i].item == null)
+                        {
+                            hasItem = true;
+                            container[i] = new InvemtorySlot(item, amount);
+                            index = i;
+                            totalAmountItem = amount;
+                        }
                     }
                 }
             }
         }
         catch (NullReferenceException)
         {
-            return;
+           
         }
-        if (!hasItem && container.Count < inventoryÑapcity) container.Add(new InvemtorySlot(item, amount));  
+        if (!hasItem && container.Count < inventoryÑapcity)
+        {
+            container.Add(new InvemtorySlot(item, amount));
+            index = container.Count - 1;
+            totalAmountItem = amount;
+        }
     }
 
-
+    /// <summary>
+    /// Óäàëåíèå èç èíâåíòàğÿ ïğåäìåòà 
+    /// </summary>
+    /// <param name="indexSlot"></param>
     public void RemoveItem(int indexSlot) 
     {
         if (container.Count == 0 || indexSlot > container.Count) return; 
@@ -50,10 +65,15 @@ public class InventoryObject : ScriptableObject
         }
         else return;
     }
-
     public int GetInventoryCapacity()
     {
         return inventoryÑapcity;
+    }
+
+    public int GetCurrentIndexItem()
+    {
+
+        return 0;
     }
 }
 
