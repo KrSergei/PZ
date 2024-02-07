@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: MilitaryHelmet
   m_EditorClassIdentifier: 
   prefab: {fileID: 4371781483725563081, guid: 07eac00fe57f26a49b12e502be711dbf, type: 3}
+  itemIcon: {fileID: 21300000, guid: 1aa8d4e1c6a8e934595f9ab61f2bf8aa, type: 3}
   type: 1
   decsription: 
   attackBonusValue: 0

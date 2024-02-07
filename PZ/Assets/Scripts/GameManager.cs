@@ -11,7 +11,7 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         GetPlayerPosition();
-        SpawnMonster();
+        //SpawnMonster();
     }
 
     private void GetPlayerPosition()

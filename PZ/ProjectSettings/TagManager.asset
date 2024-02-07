@@ -13,6 +13,7 @@ TagManager:
   - MilitaryHelmet
   - SovietBag
   - Obstacle
+  - InventoryScreen
   layers:
   - Default
   - TransparentFX
@@ -21,7 +22,7 @@ TagManager:
   - Water
   - UI
   - Monster
-  - Collectible
+  - Item
   - Obstacle
   - 
   - 

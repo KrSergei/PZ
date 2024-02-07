@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: DroppedAmmo_AK74
   m_EditorClassIdentifier: 
   prefab: {fileID: 7065212896535653408, guid: 08680e4c4659fbf4a81194479f35d10c, type: 3}
+  itemIcon: {fileID: 21300000, guid: 93bce68c22ba2ed4592b0338ae2ac8fd, type: 3}
   type: 0
   decsription: 
   damageValue: 0

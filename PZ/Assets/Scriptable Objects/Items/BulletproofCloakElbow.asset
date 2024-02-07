@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: BulletproofCloakElbow
   m_EditorClassIdentifier: 
   prefab: {fileID: 693350695415475627, guid: ebfdca309b200a1478fd2f0e05f1ae44, type: 3}
+  itemIcon: {fileID: 21300000, guid: 3e85cdf74e325fa40a2c9e688dc51325, type: 3}
   type: 1
   decsription: 
   attackBonusValue: 0

@@ -1,23 +1,30 @@
 using UnityEngine;
 using UnityEngine.Events;
 using System;
+using UnityEngine.UI;
 
 public class Inventory : MonoBehaviour
 {
     [Header("Events")]
     [SerializeField] private EvenInt onDoesShoot;
     [SerializeField] private EvenInt onAmmoOver;
-
+    [SerializeField] private UnityEvent<int, Sprite, int> onItemTaken;
     [Header("Inventory Fields")]
     public InventoryObject inventory;
     public AmmoObject ammoItem;
 
+    /// <summary>
+    /// Добавление предмета в инвентарь. Метод вызывается через UnityEvent в скрипте PlayerCollision
+    /// </summary>
+    /// <param name="item"></param>
     public void AddItem(GameObject item)
     {
         var _item = item.GetComponent<Item>();
         if (_item)
         {
-            inventory.AddItem(_item.item);
+            inventory.AddItem(_item.item, out int index, out int totalAmount);
+            onItemTaken?.Invoke(index, _item.item.itemIcon, totalAmount);
+            //ToDo return to pool
             item.SetActive(false);
         }
     }
@@ -50,6 +57,12 @@ public class Inventory : MonoBehaviour
         }
         return value;
     }
+
+    public void AddItemToInventory(GameObject item)
+    {
+        var _item = item.GetComponent<Item>();
+    }
+
 
     private void CheckAmountItem(int indexSlot)
     {
