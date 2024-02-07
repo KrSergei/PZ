@@ -15,8 +15,8 @@ MonoBehaviour:
   "inventory\u0421apcity": 6
   container:
   - item: {fileID: 11400000, guid: 6bae3d04979abf74a926f0ec9e22fdcc, type: 2}
-    amount: 2
+    amount: 4
   - item: {fileID: 11400000, guid: 5261084758e17f3499e9dcc810487406, type: 2}
-    amount: 1
+    amount: 2
   - item: {fileID: 11400000, guid: 424de845d3d159b4da8f7d94f6873266, type: 2}
-    amount: 1
+    amount: 2

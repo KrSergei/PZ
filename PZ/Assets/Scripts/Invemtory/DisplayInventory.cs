@@ -20,39 +20,14 @@ public class DisplayInventory : MonoBehaviour
 
 
     private void Start()
-    {
-        //CreateDisplay();
+    {        
         GetInventorySlots();
-    }
-
-    /// <summary>
-    /// Стартовое создание инвентаря
-    /// </summary>
-    public void CreateDisplay()
-    {
-        for (int i = 0; i < inventory.GetInventoryCapacity(); i++)
-        {
-            GameObject item = Instantiate(slotPrefab, Vector2.zero, Quaternion.identity, transform);
-            item.GetComponent<ButtonDelete>().indexButton = i;
-            item.transform.localPosition = GetPosition(i);
-            if (i < inventory.container.Count)
-            {
-                //отрисовка иконки предмета в слоте
-                item.GetComponent<Image>().sprite = GetIconItem(inventory.container[i]);
-                //вывод количества предметов в слоте
-                item.GetComponentInChildren<TextMeshProUGUI>().text = inventory.container[i].amount.ToString("n0");
-                //добавление предмета в инвентарь
-                itemDisplayed.Add(inventory.container[i], item);
-            }
-            createdSlots.Add(item);
-        }   
     }
 
     private void GetInventorySlots()
     {
         foreach (Transform child in transform)
         {
-            //createdSlots.Add(child.gameObject);
             slotHandlers.Add(child.gameObject.GetComponent<InventorySlotHandler>());
         }
         FillingSlots();
@@ -63,21 +38,11 @@ public class DisplayInventory : MonoBehaviour
         {
             if (inventory.container[i].item != null)
             {
-                slotHandlers[i].GetTextCount().text = inventory.container[i].amount.ToString();
+                if (AmountItem(inventory.container[i].amount))
+                    slotHandlers[i].GetTextCount().text = inventory.container[i].amount.ToString();
                 slotHandlers[i].ActivateIconInSlot(inventory.container[i].item.itemIcon);
             }
         }
-    }
-
-    
-    /// <summary>
-    /// указание позиции размещения слота инвентаря
-    /// </summary>
-    /// <param name="i"></param>
-    /// <returns></returns>
-    private Vector3 GetPosition(int i)
-    {
-        return new Vector3(x_Space_Beetwen_Items * (i % number_of_column), 0f, 0f);
     }
 
     /// <summary>
@@ -109,7 +74,6 @@ public class DisplayInventory : MonoBehaviour
        return amount > 1;
     }
 
-
     public void UpdateInventoryUI(int index, Sprite itemIcon, int totalCount)
     {
         //amount item
@@ -120,62 +84,6 @@ public class DisplayInventory : MonoBehaviour
 
         //slotHandlers[index].DeactivateIconInSlot();
         slotHandlers[index].ActivateIconInSlot(itemIcon);
-    }
-
-    /// <summary>
-    /// Обновление инвентаря при подборе предмета
-    /// </summary>
-    public void UpdateInventory()
-    {
-        #region Old 
-        //    try
-        //    {
-        //        for (int i = 0; i < inventory.container.Count; i++)
-        //        {                
-
-        //            if (i >= inventory.GetInventoryCapacity()) return;
-
-        //            if (itemDisplayed.ContainsKey(inventory.container[i]))
-        //            {
-        //                //Проверка на количество, если 2 и более, то изменение количества, иначе пустая строка.
-        //                if (AmountItem(inventory.container[i].amount))
-        //                    itemDisplayed[inventory.container[i]].GetComponentInChildren<TextMeshProUGUI>().text =
-        //                    inventory.container[i].amount.ToString("n0");
-        //                else
-        //                    itemDisplayed[inventory.container[i]].GetComponentInChildren<TextMeshProUGUI>().text = "";
-
-        //            }
-        //            else
-        //            {
-        //                GameObject item = createdSlots[i];
-        //                //отрисовка иконки предмета в слоте
-        //                item.GetComponent<Image>().sprite = GetIconItem(inventory.container[i]);
-        //                //Проверка на количество, если 2 и более, то изменение количества, иначе пустая строка.
-        //                if (AmountItem(inventory.container[i].amount))
-        //                    //вывод коичества предметов в слоте
-        //                    item.GetComponentInChildren<TextMeshProUGUI>().text = inventory.container[i].amount.ToString("n0");
-        //                else
-        //                    item.GetComponentInChildren<TextMeshProUGUI>().text = "";
-        //                //добавление предмета в инвентарь
-        //                itemDisplayed.Add(inventory.container[i], item);
-        //                _addedItems.Add(item);
-        //            }
-        //        }
-        //}
-        //    catch (ArgumentOutOfRangeException)
-        //    {
-        //        return;
-        //    }
-        #endregion
-
-    }
-
-    public void ChangeAmountItem(int indexSlot)
-    {
-        //проверка количества патронов, если больше 1, то устанавливается значение текущего количества, иначе пустая строка
-        string currentAmount = (AmountItem(inventory.container[indexSlot].amount))
-            ? inventory.container[indexSlot].amount.ToString("n0") : "";
-        createdSlots[indexSlot].GetComponent<ButtonDelete>().textCount.text = currentAmount;
     }
 
     /// <summary>
