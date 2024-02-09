@@ -1621,7 +1621,7 @@ MonoBehaviour:
   slotHandlers: []
   x_Space_Beetwen_Items: 120
   number_of_column: 6
-  _emptyinventoryCell: {fileID: 668104657, guid: 4371214132c8b1d4b9df3d30bb5cd7c0, type: 3}
+  _emptyInventoryCell: {fileID: 0}
 --- !u!4 &627094148 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5755016938706202304, guid: 08680e4c4659fbf4a81194479f35d10c, type: 3}
@@ -1846,6 +1846,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 617490885}
     m_Modifications:
+    - target: {fileID: 432180976831805465, guid: 04eb4a6b7e5db074092698089c3ed7c5, type: 3}
+      propertyPath: onPressButtonDelete.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 6311533134261437718, guid: 04eb4a6b7e5db074092698089c3ed7c5, type: 3}
       propertyPath: m_Name
       value: SlotImage (1)
@@ -93425,11 +93429,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6090830770156458578, guid: f1b1bba2867d5514ea9c2c2dbe96ffc3, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -0.91
       objectReference: {fileID: 0}
     - target: {fileID: 6090830770156458578, guid: f1b1bba2867d5514ea9c2c2dbe96ffc3, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -0.95
       objectReference: {fileID: 0}
     - target: {fileID: 6090830770156458578, guid: f1b1bba2867d5514ea9c2c2dbe96ffc3, type: 3}
       propertyPath: m_LocalPosition.z

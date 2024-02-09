@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class Inventory : MonoBehaviour
 {
     [Header("Events")]
-    [SerializeField] private EvenInt onDoesShoot;
+    [SerializeField] private UnityEvent<int, int> onDoesShoot;
     [SerializeField] private EvenInt onAmmoOver;
     [SerializeField] private UnityEvent<int, Sprite, int> onItemTaken;
     [Header("Inventory Fields")]
@@ -42,7 +42,7 @@ public class Inventory : MonoBehaviour
                         //вычитание патронов
                         inventory.container[i].SubstractionAmount(1);
                         //изменение значения в UI
-                        onDoesShoot?.Invoke(i);
+                        onDoesShoot?.Invoke(i, inventory.container[i].amount);
                         //проверка количества патронов
                         CheckAmountItem(i);
                         value = true;
