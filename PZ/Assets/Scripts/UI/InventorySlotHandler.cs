@@ -8,20 +8,19 @@ public class InventorySlotHandler : MonoBehaviour
     [SerializeField] private Button _button;
     [SerializeField] private TextMeshProUGUI _amount;
 
-
     internal void ActivateIconInSlot(Sprite icon)
     {
-        if (_iconItem.gameObject.activeInHierarchy != true) _iconItem.gameObject.SetActive(true);
         _iconItem.sprite = icon;
+        _iconItem.color = new Color(_iconItem.color.r, _iconItem.color.g, _iconItem.color.b, 255f);
     }
 
     internal void DeactivateIconInSlot()
-    {
-        _iconItem = null;
-        if (_iconItem.gameObject.activeInHierarchy != false) _iconItem.gameObject.SetActive(false);
+    {        
+        _iconItem.color = new Color(_iconItem.color.r, _iconItem.color.g, _iconItem.color.b, 0f);
+        _iconItem.sprite = null;
     }
 
-    public TextMeshProUGUI GetTextCount()  { return _amount; }
+    internal TextMeshProUGUI GetTextCount()  { return _amount; }
 
-    public Button GetButton() { return _button; }
+    internal Button GetButton() { return _button; }
 }

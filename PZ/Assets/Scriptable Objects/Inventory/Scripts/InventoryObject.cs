@@ -5,7 +5,7 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "New Inventory", menuName = "Inventory System/Inventory")]
 public class InventoryObject : ScriptableObject
 {
-    public int inventoryÑapcity;
+    public int inventoryÑapacity;
     public List<InvemtorySlot> container = new();
 
     public void AddItem(ItemObject item, out int index, out int totalAmountItem, int amount = 1)
@@ -19,31 +19,28 @@ public class InventoryObject : ScriptableObject
             {
                 for (int i = 0; i < container.Count; i++)
                 {
-                    if (container[i].item == item)
-                    {
+                    if (container[i].item == null)
+                    { 
+                        container[i] = new InvemtorySlot(item, amount);
+                        index = i;
+                        totalAmountItem = amount;
                         hasItem = true;
+                        return;
+                    }
+                    else if (container[i].item == item)
+                    {
                         container[i].AddAmount(amount);
                         index = i;
                         totalAmountItem = container[i].amount;
-                    }
-                    else
-                    {
-                        if (container[i].item == null)
-                        {
-                            hasItem = true;
-                            container[i] = new InvemtorySlot(item, amount);
-                            index = i;
-                            totalAmountItem = amount;
-                        }
+                        hasItem = true;
+                        return;
                     }
                 }
             }
         }
-        catch (NullReferenceException)
-        {
-           
-        }
-        if (!hasItem && container.Count < inventoryÑapcity)
+        catch (NullReferenceException) { }
+
+        if (!hasItem && container.Count < inventoryÑapacity)
         {
             container.Add(new InvemtorySlot(item, amount));
             index = container.Count - 1;
@@ -60,20 +57,15 @@ public class InventoryObject : ScriptableObject
         if (container.Count == 0 || indexSlot > container.Count) return; 
 
         if (container[indexSlot].item != null)
-        {
+        {           
+            container[indexSlot].amount = 0;
             container[indexSlot] = null;
         }
         else return;
     }
     public int GetInventoryCapacity()
     {
-        return inventoryÑapcity;
-    }
-
-    public int GetCurrentIndexItem()
-    {
-
-        return 0;
+        return inventoryÑapacity;
     }
 }
 

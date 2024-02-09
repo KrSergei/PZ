@@ -12,11 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 46968b0a2ed6c7d45b562ab04fc6cd7f, type: 3}
   m_Name: SovietBagInventory
   m_EditorClassIdentifier: 
-  "inventory\u0421apcity": 6
+  "inventory\u0421apacity": 6
   container:
-  - item: {fileID: 11400000, guid: 6bae3d04979abf74a926f0ec9e22fdcc, type: 2}
-    amount: 2
+  - item: {fileID: 0}
+    amount: 0
   - item: {fileID: 11400000, guid: 5261084758e17f3499e9dcc810487406, type: 2}
-    amount: 1
+    amount: 6
   - item: {fileID: 11400000, guid: 424de845d3d159b4da8f7d94f6873266, type: 2}
-    amount: 1
+    amount: 6
