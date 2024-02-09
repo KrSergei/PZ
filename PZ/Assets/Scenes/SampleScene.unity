@@ -93500,6 +93500,10 @@ PrefabInstance:
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 6090830770156458587, guid: f1b1bba2867d5514ea9c2c2dbe96ffc3, type: 3}
+      propertyPath: onDoesShoot.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: UpdateTextInventoryUI
+      objectReference: {fileID: 0}
+    - target: {fileID: 6090830770156458587, guid: f1b1bba2867d5514ea9c2c2dbe96ffc3, type: 3}
       propertyPath: onItemTaken.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: UpdateInventoryUI
       objectReference: {fileID: 0}
