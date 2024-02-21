@@ -1,12 +1,12 @@
 using ObjecPool;
-using System;
 using UnityEngine;
 
 public class Pool : MonoBehaviour
 {
     public static Pool instance;
+    public string nameItemInPool;
     public int PRELOAD_COUNT = 10;
-    public Transform bulletsStorage;
+    public Transform itemStorage;
     [SerializeField] private ItemObject _spawnedItem;
     private PoolBase<GameObject> _spawnedItems;
     private void Awake()
@@ -20,7 +20,7 @@ public class Pool : MonoBehaviour
         GetItem(position);
     }
     public GameObject GetPrefab()
-    {
+    {   
         return _spawnedItem.prefab;
     }
 
@@ -36,9 +36,18 @@ public class Pool : MonoBehaviour
 
     public GameObject Preload()
     {
+        //создание объекта
         GameObject item = Instantiate(_spawnedItem.prefab);
+        //установка родиьеля для созданного объъекта
         item.transform.parent = transform;
+        //присвоение имени для пула объектов.
+        if(nameItemInPool == "") SetNameForpoolByItem(_spawnedItem.Name);
         return item;
+    }
+
+    private void SetNameForpoolByItem(string name)
+    {
+        nameItemInPool = name;
     }
     public void GetAction(GameObject item) => _spawnedItem.prefab.SetActive(true);
     public void ReturnAction(GameObject item) => _spawnedItem.prefab.SetActive(false);

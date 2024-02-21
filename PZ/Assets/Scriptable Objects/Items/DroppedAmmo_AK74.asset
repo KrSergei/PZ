@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6c524f97940f3b04bba46e733954d1f0, type: 3}
   m_Name: DroppedAmmo_AK74
   m_EditorClassIdentifier: 
+  Name: ammo
   prefab: {fileID: 7065212896535653408, guid: 08680e4c4659fbf4a81194479f35d10c, type: 3}
   itemIcon: {fileID: 21300000, guid: d45f0cae013abb84688afe6e4bc52845, type: 3}
   type: 0

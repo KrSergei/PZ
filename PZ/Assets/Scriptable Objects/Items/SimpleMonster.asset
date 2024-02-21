@@ -12,7 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e10abea8994b7e74ebb3ec1f37addb04, type: 3}
   m_Name: SimpleMonster
   m_EditorClassIdentifier: 
+  Name: simpleMonster
   prefab: {fileID: 5689973056936883389, guid: 18246005bffa764488b29db2dc2dde4b, type: 3}
+  itemIcon: {fileID: 0}
   type: 3
   decsription: 
   damage: 2
