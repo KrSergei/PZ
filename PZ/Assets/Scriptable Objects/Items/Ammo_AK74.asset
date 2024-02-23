@@ -12,8 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6c524f97940f3b04bba46e733954d1f0, type: 3}
   m_Name: Ammo_AK74
   m_EditorClassIdentifier: 
+  Name: bullet_AK-74
   prefab: {fileID: 3728848153840559318, guid: 34ced165226e11442b3e61907ab8c1e4, type: 3}
-  itemIcon: {fileID: 0}
+  itemIcon: {fileID: 21300000, guid: d45f0cae013abb84688afe6e4bc52845, type: 3}
   type: 0
   decsription: 
   damageValue: 10

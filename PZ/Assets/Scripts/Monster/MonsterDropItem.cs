@@ -2,14 +2,14 @@ using UnityEngine;
 
 public class MonsterDropItem : MonoBehaviour
 {
-    public Items items;
+    public ItemsPools items;
     private void Awake()
     {
-        items = FindObjectOfType<Items>();
+        items = FindObjectOfType<ItemsPools>();
     }
     public void DropRandomItem()
     {
-        items.DropChoicedItemsPool(GetRandom(), transform.position);
+        //items.SpawnChoicedItemsPool(GetRandom(), transform.position);
     }
 
     private int GetRandom()

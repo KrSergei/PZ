@@ -17,17 +17,10 @@ public class InventoryObject : ScriptableObject
         {
             if (hasItem == false)
             {
+                //Поиск в инвентаре совпадающей ячейки, если есть, то увеличение количества элементов в ячейке
                 for (int i = 0; i < container.Count; i++)
                 {
-                    if (container[i].item == null)
-                    { 
-                        container[i] = new InvemtorySlot(item, amount);
-                        index = i;
-                        totalAmountItem = amount;
-                        hasItem = true;
-                        return;
-                    }
-                    else if (container[i].item == item)
+                    if (container[i].item == item)
                     {
                         container[i].AddAmount(amount);
                         index = i;
@@ -37,9 +30,25 @@ public class InventoryObject : ScriptableObject
                     }
                 }
             }
+            if (hasItem == false)
+            {
+                //Поиск пустой ячейки и ее заполнение элементом item
+                for (int i = 0; i < container.Count; i++)
+                {
+                    if (container[i].item == null)
+                    {
+                        container[i] = new InvemtorySlot(item, amount);
+                        index = i;
+                        totalAmountItem = amount;
+                        hasItem = true;
+                        return;
+                    }
+                }
+            }
         }
         catch (NullReferenceException) { }
-
+        //Если нет нужного элемента и количество элементов меньше вместимости инвентаря, то добавляется новая ячейка инвентаря
+        //Возвращается индекс добавленной ячейки иколичество элементов в ячейке
         if (!hasItem && container.Count < inventoryСapacity)
         {
             container.Add(new InvemtorySlot(item, amount));
@@ -47,6 +56,7 @@ public class InventoryObject : ScriptableObject
             totalAmountItem = amount;
         }
     }
+
 
     /// <summary>
     /// Удаление из инвентаря предмета 

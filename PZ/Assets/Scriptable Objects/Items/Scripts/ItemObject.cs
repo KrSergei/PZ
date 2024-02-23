@@ -1,15 +1,15 @@
 using UnityEngine;
-using UnityEngine.UI;
 public enum ItemType
 {
     Ammo,
     Equipment,
-    Defaault,
+    Default,
     Monster
 }
 
 public abstract class ItemObject : ScriptableObject
 {
+    public string Name;
     public GameObject prefab;
     public Sprite itemIcon;
     public ItemType type;

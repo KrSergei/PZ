@@ -1,17 +1,21 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
+    private const string AMMO = "ammo";
     public static GameManager instance;
 
     public int startAmount;
     public Pool pool;
     public GameObject monsterSpawnArea;
-
+    [SerializeField] private ItemSpawner _itemSpawner;
+    [SerializeField] private GameObject _itemsPools;
     private void Start()
     {
         GetPlayerPosition();
         //SpawnMonster();
+        InitSpawnItems();
     }
 
     private void GetPlayerPosition()
@@ -32,5 +36,10 @@ public class GameManager : MonoBehaviour
         Vector3 position = new Vector3(Random.Range(sizeX * -0.5f, sizeX * 0.5f), Random.Range(sizeY * -0.5f, sizeY * 0.5f), 0f);
            
         return position;
+    }
+
+    private void InitSpawnItems()
+    {
+        _itemSpawner.StartSpawnItem(AMMO);
     }
 }
