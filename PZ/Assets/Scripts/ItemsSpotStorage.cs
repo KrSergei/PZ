@@ -21,6 +21,6 @@ public class ItemsSpotStorage : MonoBehaviour
     public int GetCountSpawnedItems(){ return _spawnSpotsStorage.Count; }
     //Get position by index from sapwn spots storage
     public Transform GetSpotSpawn(int index) { return _spawnSpotsStorage[index].transform;}
-    //Get name spot storage
+    //Get name spots storage
     public string GetNameSpotStorage() { return _nameSpotStorage; }
 }
