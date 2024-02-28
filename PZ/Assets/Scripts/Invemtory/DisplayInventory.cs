@@ -1,24 +1,15 @@
 using UnityEngine;
-using TMPro;
-using UnityEngine.UI;
 using System.Collections.Generic;
-using System;
-using System.Reflection;
-using Unity.VisualScripting;
 
 public class DisplayInventory : MonoBehaviour
 {
     public InventoryObject inventory;
     public GameObject slotPrefab;
-    public List<GameObject> createdSlots = new();
     public List<InventorySlotHandler> slotHandlers = new();
 
     public int x_Space_Beetwen_Items;
     public int number_of_column;
-    [SerializeField]
-    private Dictionary<InvemtorySlot, GameObject> itemDisplayed = new();
     [SerializeField] private Sprite _emptyInventoryCell;
-
 
     private void Start()
     {        
@@ -32,20 +23,21 @@ public class DisplayInventory : MonoBehaviour
     {
         foreach (Transform child in transform)
         {
-            slotHandlers.Add(child.gameObject.GetComponent<InventorySlotHandler>());    
+            slotHandlers.Add(child.gameObject.GetComponent<InventorySlotHandler>());            
         }
         SetSlotIndex();
         FillingSlots();
     }
 
     /// <summary>
-    /// Установка индекса для кнопки "Delete" интерфейса инвентаря
+    /// Установка индекса слота интерфейса инвентаря
     /// </summary>
     private void SetSlotIndex()
     {
         for (int i = 0; i < slotHandlers.Count; i++)
         {
-            slotHandlers[i].gameObject.GetComponent<ButtonDelete>().indexButton = i;
+            //slotHandlers[i].gameObject.GetComponent<ButtonDelete>().indexButton = i;
+            slotHandlers[i].GetComponent<UISlot>().SlotIndex = i;
         }
     }
 
@@ -105,14 +97,24 @@ public class DisplayInventory : MonoBehaviour
     }
 
     /// <summary>
+    /// перестановка местами предметов в инвентаре
+    /// </summary>
+    /// <param name="indexFrom"></param>
+    /// <param name="indexTo"></param>
+    public void SwapSlots(int indexFrom, int indexTo)
+    {
+        inventory.SwapItem(indexFrom, indexTo);
+        var slot = slotHandlers[indexTo];
+        slotHandlers[indexTo] = slotHandlers[indexFrom];
+        slotHandlers[indexFrom] = slot;
+    }
+
+    /// <summary>
     /// Сброс иконки и количества при удалении предмета из инвентаря
     /// </summary>
     /// <param name="indexSlot"></param>
     public void RemoveItem(int indexSlot)
     {
-        //createdSlots[indexSlot].GetComponent<Image>().sprite = null;
-        //createdSlots[indexSlot].GetComponent<SpriteRenderer>().sprite = _emptyinventoryCell;
-        //createdSlots[indexSlot].GetComponent<ButtonDelete>().textCount.text = "";
         slotHandlers[indexSlot].GetTextCount().text = "";
         slotHandlers[indexSlot].DeactivateIconInSlot();
     }
