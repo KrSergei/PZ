@@ -1,7 +1,6 @@
 using UnityEngine;
 using UnityEngine.Events;
 using System;
-using UnityEngine.UI;
 
 public class Inventory : MonoBehaviour
 {
@@ -13,6 +12,10 @@ public class Inventory : MonoBehaviour
     public InventoryObject inventory;
     public AmmoObject ammoItem;
 
+    private void Start()
+    {
+        inventory.InitInventory();
+    }
     /// <summary>
     /// Добавление предмета в инвентарь. Метод вызывается через UnityEvent в скрипте PlayerCollision
     /// </summary>

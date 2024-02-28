@@ -1,6 +1,8 @@
-using System;
+    using System;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
+using static UnityEditor.Progress;
 
 [CreateAssetMenu(fileName = "New Inventory", menuName = "Inventory System/Inventory")]
 public class InventoryObject : ScriptableObject
@@ -47,16 +49,25 @@ public class InventoryObject : ScriptableObject
             }
         }
         catch (NullReferenceException) { }
-        //Если нет нужного элемента и количество элементов меньше вместимости инвентаря, то добавляется новая ячейка инвентаря
-        //Возвращается индекс добавленной ячейки иколичество элементов в ячейке
-        if (!hasItem && container.Count < inventoryСapacity)
-        {
-            container.Add(new InvemtorySlot(item, amount));
-            index = container.Count - 1;
-            totalAmountItem = amount;
-        }
     }
 
+    public void SwapItem(int indexFromCell, int indexToCell)
+    {
+        var itemIncell = container[indexToCell];
+        container[indexToCell] = container[indexFromCell];
+        container[indexFromCell] = itemIncell;
+    }
+
+    /// <summary>
+    /// Заполнение инвентаря пустыми ячейками
+    /// </summary>
+    public void InitInventory()
+    {
+        if (container.Count < inventoryСapacity)
+            for (int i = 0; i < inventoryСapacity; i++)
+               container.Add(new InvemtorySlot(null, 0));
+   
+    }
 
     /// <summary>
     /// Удаление из инвентаря предмета 
