@@ -20,3 +20,4 @@ MonoBehaviour:
   damage: 2
   health: 10
   speed: 1
+  radiusRadar: 0

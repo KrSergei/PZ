@@ -1,16 +1,24 @@
-using System;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
-public class UISlot : MonoBehaviour, IDropHandler
+public class UISlot : MonoBehaviour, IPointerDownHandler, IDropHandler
 {
+    public UIItem currentItem;
+
     [SerializeField] private int _slotIndex;
     [SerializeField] private DisplayInventory _inventory;
+    [SerializeField] private Button _button;
+    [SerializeField] private bool _canUseItem = true;
     public int SlotIndex { get => _slotIndex; set => _slotIndex = value; }
+    public bool canUseItem { get => _canUseItem; set => _canUseItem = value; }
 
     private void Start()
     {
         _inventory = GetComponentInParent<DisplayInventory>();
+        _button = GetComponentInParent<Button>();
+        _canUseItem = true;
+        currentItem = GetComponentInChildren<UIItem>();
     }
 
     public void OnDrop(PointerEventData eventData)
@@ -21,7 +29,7 @@ public class UISlot : MonoBehaviour, IDropHandler
         int index = otherItemTransform.GetComponentInParent<UISlot>().SlotIndex;
         //Проверка, есть ли в нужном слоте предмет
         if (transform.GetComponentInChildren<UIItem>() != null)
-        {   
+        {
             //Получение ссылки на предмет в слоте
             GameObject currentItem = transform.GetComponentInChildren<UIItem>().gameObject;
             //Перенос из текущего слота в слот переносимого предмета 
@@ -33,8 +41,10 @@ public class UISlot : MonoBehaviour, IDropHandler
         otherItemTransform.SetParent(transform);
         // Установка позиции предмета в центре слота
         otherItemTransform.localPosition = Vector3.zero;
-        //
-        _inventory.SwapSlots(index, SlotIndex);
     }
 
+    public void OnPointerDown(PointerEventData eventData)
+    {
+        Debug.Log("Down");
+    }
 }

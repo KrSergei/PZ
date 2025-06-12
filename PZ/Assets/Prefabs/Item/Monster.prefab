@@ -355,7 +355,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &5689973056816919342
 Transform:
   m_ObjectHideFlags: 0
@@ -435,7 +435,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  target: {fileID: 0}
+  target: {x: 0, y: 0, z: 0}
   radiusRadar: 5
   _collider: {fileID: 5689973056816919337}
 --- !u!1 &5689973056936883389
@@ -448,12 +448,14 @@ GameObject:
   m_Component:
   - component: {fileID: 5689973056936883384}
   - component: {fileID: 5689973056936883390}
+  - component: {fileID: 8091078551685612166}
   - component: {fileID: 5689973056936883386}
   - component: {fileID: 5689973056936883385}
   - component: {fileID: 5689973056936883387}
   - component: {fileID: 5689973056936883380}
   - component: {fileID: 5689973056936883382}
   - component: {fileID: 8729387414555413107}
+  - component: {fileID: -3666928045030365140}
   m_Layer: 6
   m_Name: Monster
   m_TagString: Monster
@@ -496,6 +498,22 @@ CapsuleCollider2D:
   m_Offset: {x: -0.009476662, y: 0}
   m_Size: {x: 0.70622635, y: 2}
   m_Direction: 0
+--- !u!58 &8091078551685612166
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5689973056936883389}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 10
 --- !u!50 &5689973056936883386
 Rigidbody2D:
   serializedVersion: 4
@@ -557,9 +575,9 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
   healthBar: {fileID: 0}
-  gm: {fileID: 0}
   health: 0
-  maxHealth: 5
+  maxHealth: 15
+  _drop: {fileID: 5689973056936883380}
 --- !u!114 &5689973056936883380
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -587,7 +605,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isTargetDetected: 0
   speed: 0.5
-  targetPosition: {fileID: 0}
+  targetPosition: {x: 0, y: 0, z: 0}
 --- !u!114 &8729387414555413107
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -600,7 +618,43 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 15dc6f682abb5d8498df28837e8b508b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _monsterRenderers: []
+  _monsterRenderers:
+  - {fileID: 503282313595240561}
+  - {fileID: 1734550358165151971}
+  - {fileID: 6738520670468314149}
+  - {fileID: 3325922640454992840}
+  - {fileID: 8624984686963346200}
+  - {fileID: 5436311500812480823}
+--- !u!114 &-3666928045030365140
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5689973056936883389}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fa4fe7941aefcdb459a7a20d0e296d34, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onPlayerDetected:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 5689973056936883382}
+        m_TargetAssemblyTypeName: MonsterMovement, Assembly-CSharp
+        m_MethodName: IsTargetLocked
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  target: {x: 0, y: 0, z: 0}
+  radiusRadar: 10
+  _collider: {fileID: 8091078551685612166}
 --- !u!1 &7926629677008236712
 GameObject:
   m_ObjectHideFlags: 0

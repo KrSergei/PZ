@@ -16,6 +16,7 @@ public class Inventory : MonoBehaviour
     {
         inventory.InitInventory();
     }
+
     /// <summary>
     /// Добавление предмета в инвентарь. Метод вызывается через UnityEvent в скрипте PlayerCollision
     /// </summary>
@@ -27,7 +28,6 @@ public class Inventory : MonoBehaviour
         {
             inventory.AddItem(_item.item, out int index, out int totalAmount);
             onItemTaken?.Invoke(index, _item.item.itemIcon, totalAmount);
-            //ToDo return to pool
             item.SetActive(false);
         }
     }
@@ -66,7 +66,6 @@ public class Inventory : MonoBehaviour
         var _item = item.GetComponent<Item>();
     }
 
-
     private void CheckAmountItem(int indexSlot)
     {
         //удаление предмета из инвентаря, если его количество равно 0
@@ -77,5 +76,6 @@ public class Inventory : MonoBehaviour
         } 
     }
 }
+
 [Serializable]
 public class EvenInt : UnityEvent<int> { }
